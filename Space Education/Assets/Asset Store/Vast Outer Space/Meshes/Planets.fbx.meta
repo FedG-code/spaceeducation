@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 239b7f955033e6a43a5bb6e9999d3f34
-timeCreated: 1433269515
-licenseType: Store
+guid: 35ebda20b83ec473286e2f23d5b74ac9
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Gas_Planet_A
     100002: Gas_Planet_B
@@ -132,21 +130,153 @@ ModelImporter:
     4300044: Gas_Planet_K
     4300046: Gas_Planet_L
     9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_A
+    second: {fileID: 2100000, guid: a30d8fc2bf41d47b18e56f861ddd55b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_B
+    second: {fileID: 2100000, guid: 288b108ba547a46818e2204383e158cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_C
+    second: {fileID: 2100000, guid: 03376655cda1a400d80a92a4a9a44938, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_D
+    second: {fileID: 2100000, guid: d5efc8e82e5bf4d68b841ead61000ffa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_E
+    second: {fileID: 2100000, guid: 60460bdb625d44595bcf516c6e4c3d2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_F
+    second: {fileID: 2100000, guid: e65170a45f1244c99af34f9bffd1c427, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_G
+    second: {fileID: 2100000, guid: d73dd86edeefa4333bb00b8896761998, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_H
+    second: {fileID: 2100000, guid: ca4807ce3f8d8402487cebd37c05061a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_I
+    second: {fileID: 2100000, guid: c5414b33445e24ca5ae648b6165684f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_J
+    second: {fileID: 2100000, guid: de003c20651f24a4ab3a6df83c4b65ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_K
+    second: {fileID: 2100000, guid: bbd773e094f3345a58f8d9105f135291, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gas_Planet_L
+    second: {fileID: 2100000, guid: c990d0b9620084fad88a74108cd24276, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_A
+    second: {fileID: 2100000, guid: 3e69225340aaf43ef837447d343f22c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_B
+    second: {fileID: 2100000, guid: 8c8f930c180774365b6d9a67f28b3da9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_C
+    second: {fileID: 2100000, guid: b180c91c6be6a4ddebfcf1c98990c0f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_D
+    second: {fileID: 2100000, guid: f6fbcaa45a9de43f2b8cce9b5d231da1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_E
+    second: {fileID: 2100000, guid: 74d0defcf87a3487baddaeca9d497579, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_F
+    second: {fileID: 2100000, guid: 3b7ef1cd89f754ff289474160d91d54c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_G
+    second: {fileID: 2100000, guid: fe0ca47dfa07245ccb883b5b1f331349, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_H
+    second: {fileID: 2100000, guid: 4fbff11516124429cb41e1ec5b87a871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_I
+    second: {fileID: 2100000, guid: bcbdd9f4ba40449979ca11b981a59575, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_J
+    second: {fileID: 2100000, guid: 4142d5494d70041629deda7e9f38d327, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_K
+    second: {fileID: 2100000, guid: f94d6ae9d1f7140d292e9ae5dde1cfb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Planet_L
+    second: {fileID: 2100000, guid: 26cdfaa09cadb4af08f2cdc0fc672219, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -154,38 +284,54 @@ ModelImporter:
     globalScale: 100
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
