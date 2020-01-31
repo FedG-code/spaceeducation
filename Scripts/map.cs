@@ -5,8 +5,8 @@ using UnityEngine;
 public class map : MonoBehaviour
 {
     public GameObject hexPrefab;
-    int width = 5;
-    int height = 5;
+    int width = 3;
+    int height = 3;
 
     float xOffset = 0.875f; //double 0.434
     float zoffset = 0.758f;
@@ -26,9 +26,16 @@ public class map : MonoBehaviour
 
 
                 GameObject hex_go = (GameObject)Instantiate(hexPrefab, new Vector3(xPos, 0, y*zoffset), Quaternion.identity);
+                // Name the gameobject
                 hex_go.name = "Hex_" + x + "_" + y;
+                //Make sure the hex is aware of its place on the map
+                hex_go.GetComponent<Hex>().x = x;
+                hex_go.GetComponent<Hex>().x = y;
+
 
                 hex_go.transform.SetParent(this.transform);
+
+                hex_go.isStatic = true;
             }
         }
     }
