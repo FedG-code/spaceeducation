@@ -2,22 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class Hex : MonoBehaviour
-//{
-//    // Start is called before the first frame update
-//    void Start()
-//    {
 
-//    }
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-
-//    }
-//}
-
-public class Hex {
+public class Hex : MonoBehaviour {
 
     // Q + R + S = 0
     // S = -(Q + R)
@@ -36,19 +23,85 @@ public class Hex {
 
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
 
+    float radius = 1f;
+    bool allowWrapEastWest = true;
+    bool allowWrapNorthSouth = false;
+
     public Vector3 Position()
     {
-        float radius = 1f;
-        float height = radius * 2;
-        float width = WIDTH_MULTIPLIER * height;
+        //float width = WIDTH_MULTIPLIER * height;
 
-        float vert = height * 0.75f;
-        float horiz = width;
+        float vert = HexHeight() * 0.75f;
+        float horiz = HexWidth();
 
-        return new Vector3 (
-            horiz * (this.Q + this.R/2f), 0 ,vert * this.R
+        return new Vector3(
+            horiz * (this.Q + this.R / 2f), 0, vert * this.R
 
             );
+    }
+
+    public float HexHeight()
+    {
+        return radius * 2;
+    }
+
+    public float HexWidth()
+    {
+        return WIDTH_MULTIPLIER * HexHeight();
+    }
+
+    public float HexVerticalSpacing()
+    {
+        return HexHeight() * 0.75f;
+    }
+
+    public float HexHorizontalSpacing()
+    {
+        return HexWidth();
+    }
+
+    public Vector3 PositionFromCamera(Vector3 cameraPosition,
+        float numRows, float numColumns)
+        {
+        float mapHeight = numRows * HexVerticalSpacing();
+
+        Vector3 position = Position();
+
+        if (allowWrapEastWest)
+        {
+
+            float mapWidth = numColumns * HexHorizontalSpacing();
+
+            float howManyWidthsFromCamera = (position.x - cameraPosition.x) / mapWidth;
+
+            if (howManyWidthsFromCamera > 0)
+                howManyWidthsFromCamera += 0.5f;
+            else
+                howManyWidthsFromCamera -= 0.5f;
+
+            int howManyWidthToFix = (int)howManyWidthsFromCamera;
+
+            position.x -= howManyWidthToFix * mapWidth;
+        }
+
+        if (allowWrapNorthSouth)
+        {
+
+            float mapWidth = numColumns * HexHorizontalSpacing();
+
+            float howManyHeightsFromCamera = (position.x - cameraPosition.z) / mapHeight;
+
+            if (howManyHeightsFromCamera > 0)
+                howManyHeightsFromCamera += 0.5f;
+            else
+                howManyHeightsFromCamera -= 0.5f;
+
+            int howManyHeightsToFix = (int)howManyHeightsFromCamera;
+
+            position.z -= howManyHeightsToFix * mapWidth;
+        }
+        return position;
+
     }
 
 }
