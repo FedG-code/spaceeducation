@@ -13,6 +13,19 @@
     {% include header.html %}
 
     <!-- Banner -->
+    <section id="banner" class="major">
+        <div class="inner">
+            <header class="major">
+                <h1>{{ page.landing-title }}</h1>
+            </header>
+            <div class="content">
+                <p style="text-transform: uppercase;">{{ site.description }}</p>
+                <ul class="actions">
+                    <li><a href="blog.html" class="button next scrolly">Follow our progress</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <!-- Main -->
     <div id="main">
@@ -24,7 +37,7 @@
         <section id="two">
             <div class="inner">
                 <header class="major">
-                  <h2>{{ site.title }} {{ site.subtitle }}</h2>
+                    <h2>Massa libero</h2>
                 </header>
                 <p>{{ content }}</p>
                 <ul class="actions">
