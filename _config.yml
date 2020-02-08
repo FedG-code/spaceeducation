@@ -1,9 +1,9 @@
 # site settings
 title: Vega
-subtitle: Galactic
+subtitle: Galaxy
 description: A Hex tile strategy game set in space
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://fedg-code.github.io/spaceeducation/" # the base hostname & protocol for your site
+baseurl: "/spaceeducation" # the subpath of your site, e.g. /blog
+url: "https://fedg-code.github.io/" # the base hostname & protocol for your site
 
 # homepage tiles
 tiles-source: posts # accepts "posts" or "pages"
