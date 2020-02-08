@@ -1,3 +1,4 @@
-theme: jekyll-theme-cayman
+remote_theme: andrewbanchich/forty-jekyll-theme
+# theme: jekyll-theme-cayman
 # source: site/src/
 # destination: site/public_html/
