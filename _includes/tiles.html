@@ -10,6 +10,7 @@
       <img src="{{ tile.image }}" alt="" />
     </span>
     <header class="major">
+{% if 'posts' == site.tiles-source %} <p class="date">{{ tile.date|date: '%B %d, %Y' }}</span>{% endif %}
       <h3><a href="{{ tile.url  | relative_url }}" class="link">{{ tile.title }}</a></h3>
       <p>{{ post.description }}</p>
     </header>
