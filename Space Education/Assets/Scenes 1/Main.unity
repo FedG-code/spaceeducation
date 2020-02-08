@@ -948,7 +948,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.1020524e-12, z: 5.795866e+22, w: 1.1285597e+27}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 8.31661e+16}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2351,7 +2351,7 @@ GameObject:
   - component: {fileID: 1462841343}
   - component: {fileID: 1462841342}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MainMenu(TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2373,7 +2373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462841342
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MENU
+  m_text: MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
   m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
@@ -2464,10 +2464,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -1.0394287, w: -1.2127075}
   m_textInfo:
     textComponent: {fileID: 1462841342}
-    characterCount: 4
+    characterCount: 9
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2531,8 +2531,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: 14}
-  m_SizeDelta: {x: 306.8, y: 99.3}
+  m_AnchoredPosition: {x: -16, y: 17.3}
+  m_SizeDelta: {x: 534.5, y: 105.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469269149
 MonoBehaviour:
