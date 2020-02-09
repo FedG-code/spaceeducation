@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 4fabb6c2cc83748a3983bd5dc5186705
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mainframe BB
+  fontNames:
+  - Mainframe BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7db269ce70e504d79a30d7a2ed6eb860, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
