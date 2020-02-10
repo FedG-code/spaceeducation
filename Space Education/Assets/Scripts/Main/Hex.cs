@@ -4,11 +4,9 @@ using UnityEngine;
 
 
 
-public class Hex : MonoBehaviour {
+public class Hex {
 
-    // Q + R + S = 0
-    // S = -(Q + R)
-    
+   
 
     public Hex(int q, int r)
     {
@@ -17,25 +15,32 @@ public class Hex : MonoBehaviour {
         this.S = -(q + r);
 
     }
+
+    // Q + R + S = 0
+    // S = -(Q + R)
     public readonly int Q;  // Column
     public readonly int R; // Row
     public readonly int S;
 
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
 
-    float radius = 1f;
+
     bool allowWrapEastWest = true;
     bool allowWrapNorthSouth = false;
 
     public Vector3 Position()
     {
-        //float width = WIDTH_MULTIPLIER * height;
+        float radius = 1f;
+        float height = radius * 2;
+        float width = WIDTH_MULTIPLIER * height;
 
         float vert = HexHeight() * 0.75f;
         float horiz = HexWidth();
 
         return new Vector3(
-            horiz * (this.Q + this.R / 2f), 0, vert * this.R
+            horiz * (this.Q + this.R / 2f), 
+            0, 
+            vert * this.R
 
             );
     }

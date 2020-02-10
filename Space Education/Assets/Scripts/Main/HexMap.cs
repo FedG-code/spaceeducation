@@ -15,8 +15,8 @@ public class HexMap : MonoBehaviour
 
     public Material[] HexMaterials;
 
-    int numRows = 20;
-    int numColumns = 20;
+    public int numRows = 20;
+    public int numColumns = 20;
 
 
     public void GenerateMap()
