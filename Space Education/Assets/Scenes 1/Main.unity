@@ -183,6 +183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 11400000, guid: f9ee5d700d72540e4bfc79013ae2c38b, type: 2}
+  timerAnimtor: {fileID: 1486510171}
+  timerText: {fileID: 1377567306}
+  timerHalfWayOutColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  timerAlmostOutColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &15842649
 Transform:
   m_ObjectHideFlags: 0
@@ -6759,6 +6763,8 @@ GameObject:
   - component: {fileID: 1486510167}
   - component: {fileID: 1486510169}
   - component: {fileID: 1486510168}
+  - component: {fileID: 1486510170}
+  - component: {fileID: 1486510171}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -6822,6 +6828,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486510166}
   m_CullTransparentMesh: 0
+--- !u!225 &1486510170
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486510166}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &1486510171
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486510166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d41c9c9f0b3a4dca8b9e653b9736971, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1497206535
 GameObject:
   m_ObjectHideFlags: 0

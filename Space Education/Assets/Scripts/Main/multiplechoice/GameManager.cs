@@ -14,12 +14,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameEvents events = null;
 
+    [SerializeField] Animator timerAnimtor = null;
+    [SerializeField] TextMeshProUGUI timerText = null;
+    [SerializeField] Color timerHalfWayOutColor = Color.yellow;
+    [SerializeField] Color timerAlmostOutColor = Color.red;
+
 
     private List<AnswerData> PickedAnswers = new List<AnswerData>();
     private List<int> FinishedQuestions = new List<int>();
     private int currentQuestion = 0;
 
+    private int timerStateParaHash = 0;
+
+
+
     private IEnumerator IE_WaitTillNextRound = null;
+    private IEnumerator IE_StartTimer = null;
+    private Color timerDefaultColor = Color.white;
 
     private bool IsFinished
     {
@@ -29,9 +40,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        events.UpdateQuestionAnswer += UpdateAnswers;   
+    }
+    void OnDisable()
+    {
+        events.UpdateQuestionAnswer -= UpdateAnswers;
+    }
+
+
+    void Awake()
+    {
+        events.CurrentFinalScore = 0;   
+    }
+
     void Start()
-    {       
+    {
+        timerDefaultColor = timerText.color;
         LoadQuestions();
+
+        
+
+        timerStateParaHash = Animator.StringToHash("TimerState");
+
         //generate random value 
         var seed = UnityEngine.Random.Range(int.MinValue,int.MaxValue);
         UnityEngine.Random.InitState(seed); 
@@ -88,11 +120,18 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.LogWarning("something went wrong while " +
             "trying to display new Question UI data "); }
+
+        if (question.useTimer)
+        {
+            UpdateTimer(question.useTimer);
+        }
+
     }
 
     //check the answer when the next button is clicked
     public void Accept()
-    {
+    {   //after the question is answered the timer disappear
+        UpdateTimer(false);
         bool isCorrect = CheckAnswers();
         FinishedQuestions.Add(currentQuestion);
 
@@ -116,12 +155,63 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IE_WaitTillNextRound);
     }
 
+    //timer
+    void UpdateTimer(bool state)
+    {
+        switch (state)
+        {
+            case true:
+                IE_StartTimer = StartTimer();
+                StartCoroutine(IE_StartTimer);
+
+                timerAnimtor.SetInteger(timerStateParaHash, 2);
+                break;
+
+            case false:
+                if (IE_StartTimer != null)
+                {
+                    StopCoroutine(IE_StartTimer);
+                }
+                timerAnimtor.SetInteger(timerStateParaHash, 1);
+                break;
+        }
+    }
+
+    IEnumerator StartTimer()
+    {
+        var totalTime = Questions[currentQuestion].Timer;
+        var timeLeft = totalTime;
+
+        timerText.color = timerDefaultColor; 
+        while(timeLeft > 0)
+        {
+            timeLeft --;
+
+            //change timer color depending on how much time is left
+            if (timeLeft < totalTime / 2 && timeLeft < totalTime /4)
+            {
+                timerText.color = timerHalfWayOutColor ;
+            }
+            if (timeLeft < totalTime / 4)
+            {
+                timerText.color = timerAlmostOutColor;
+            }
+
+            timerText.text = timeLeft.ToString();
+            yield return new WaitForSeconds(1.0f);
+        }
+        Accept();
+    }
+
+
     IEnumerator WaitTillNextRound()
     {   // the amount of time to wait till next question 
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
         //display a new question
         Display();
     }
+
+
 
     Question GetRandomQuestion()
     {
