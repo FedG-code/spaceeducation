@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     Question[] _questions = null;
     public Question[] Questions { get { return _questions; } }
+
 
     [SerializeField] GameEvents events = null;
 
@@ -14,18 +19,58 @@ public class GameManager : MonoBehaviour
     private List<int> FinishedQuestions = new List<int>();
     private int currentQuestion = 0;
 
+    private IEnumerator IE_WaitTillNextRound = null;
+
+    private bool IsFinished
+    {
+        get
+        {  //checked if the number of questions all been completed
+            return (FinishedQuestions.Count < Questions.Length) ? false : true;
+        }
+    }
 
     void Start()
-    {
-        
-
+    {       
         LoadQuestions();
-        foreach (var question in Questions)
-        {
-            Debug.Log(question.Info);
-        }
+        //generate random value 
+        var seed = UnityEngine.Random.Range(int.MinValue,int.MaxValue);
+        UnityEngine.Random.InitState(seed); 
+
+       
         Display();
     }
+
+
+    public void UpdateAnswers(AnswerData newAnswer)
+    {   // check the type of answer, if it's single then we just clear the existing one
+        //and update with a new answer 
+        if (Questions[currentQuestion].GetAnswerType == Question.AnswerType.Single)
+        {
+            foreach(var answer in PickedAnswers)
+            {
+                if(answer != newAnswer)
+                {
+                    answer.Reset();
+                }
+                PickedAnswers.Clear();
+                PickedAnswers.Add(newAnswer);
+            }
+        }
+        else
+        {   // check if the answer is already picked, if it exist in the list then it will return false
+            bool alreadyPicked = PickedAnswers.Exists(x => x == newAnswer);
+            if (alreadyPicked)
+            {
+                PickedAnswers.Remove(newAnswer);
+            }
+            else
+            {// but if it's not picked then we add the new answer
+                PickedAnswers.Add(newAnswer);
+            }
+        }
+
+    }
+
 
     public void EraseAnswers()
     {
@@ -37,12 +82,45 @@ public class GameManager : MonoBehaviour
         EraseAnswers();
         var question = GetRandomQuestion();
 
-        if(events.updateQuestionUI != null)
+        if(events.UpdateQuestionUI != null)
         {
-            events.updateQuestionUI(question);
+            events.UpdateQuestionUI(question);
         }
         else { Debug.LogWarning("something went wrong while " +
             "trying to display new Question UI data "); }
+    }
+
+    //check the answer when the next button is clicked
+    public void Accept()
+    {
+        bool isCorrect = CheckAnswers();
+        FinishedQuestions.Add(currentQuestion);
+
+        //Update the score, if the answert of time to wait till next question  is incorrect subtract the addscore value 
+        UpdateScore((isCorrect) ? Questions[currentQuestion].AddScore : -Questions[currentQuestion].AddScore);
+
+        var type = (IsFinished) ? UIManager.ResolutionScreenType.Finish : (isCorrect) ?
+            UIManager.ResolutionScreenType.Correct :
+            UIManager.ResolutionScreenType.Incorrect;
+
+        if (events.DisplayResolutionScreen != null)
+        {
+            events.DisplayResolutionScreen(type, Questions[currentQuestion].AddScore);
+        }
+
+        if (IE_WaitTillNextRound != null)
+        {
+            StopCoroutine(IE_WaitTillNextRound);
+        }
+        IE_WaitTillNextRound = WaitTillNextRound();
+        StartCoroutine(IE_WaitTillNextRound);
+    }
+
+    IEnumerator WaitTillNextRound()
+    {   // the amount of time to wait till next question 
+        yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
+        //display a new question
+        Display();
     }
 
     Question GetRandomQuestion()
@@ -67,6 +145,35 @@ public class GameManager : MonoBehaviour
 
     }
 
+    bool CheckAnswers()
+    {
+        if (!CompareAnswers())
+        {
+            return false;
+        }
+        return true;
+    }
+    bool CompareAnswers()
+    {//check if at least one correct answers are picked
+        if (PickedAnswers.Count > 0)
+        { // list of correct answers
+            List<int> c = Questions[currentQuestion].GetCorrectAnswers();
+            // list of picked answers, select the picked answer and put into a list 
+            List<int> p = PickedAnswers.Select(x => x.AnswerIndex).ToList();
+
+            // .Except() removes all the elements except the ones in p
+            var f = c.Except(p).ToList();
+            // removes all the elements that can be found in the correct list c
+            var s = p.Except(c).ToList();
+
+            // if f and s contains elements then it return false
+            // if both lists don't contain any element it returns true
+            return !f.Any() && !s.Any(); 
+        }
+        // automatically false if no correct answer is picked
+        return false; 
+    }
+
     void LoadQuestions()
     {
         // Load all the questions inside the 'Resources'/'Questions' folder
@@ -75,6 +182,16 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i< objs.Length; i++)
         {
             _questions[i] = (Question)objs[i];
+        }
+    }
+
+    private void UpdateScore(int add)
+    {
+        events.CurrentFinalScore += add;
+
+        if (events.ScoreUpdated != null)
+        {
+            events.ScoreUpdated();
         }
     }
 
