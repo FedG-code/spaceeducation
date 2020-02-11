@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class LevelChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Animator animator;
+
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void FadeToLevel(int levelIndex)
+    {
+        animator.SetTrigger("FadeOut");
     }
 }
