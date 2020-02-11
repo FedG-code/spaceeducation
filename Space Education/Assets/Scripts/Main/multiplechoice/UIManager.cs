@@ -14,25 +14,32 @@ public struct UIManagerParameters
     public float Margins { get { return margins; } }
 }
 
+// mark struct as serializable to make it appear in inspector
 [Serializable()]
 public struct UIElements 
 {
     [SerializeField]  RectTransform answersContentArea;
     public RectTransform AnswersContentArea{get{return answersContentArea;}}
+
     [SerializeField] TextMeshProUGUI questionInfoTextObject;
     public TextMeshProUGUI QuestionInfoTextObject { get { return questionInfoTextObject; } }
+
     [SerializeField] TextMeshProUGUI scoreText;
     public TextMeshProUGUI ScoreText { get { return scoreText; } }
+
     [Space]
 
     [SerializeField] Image resolutionBG;
     public Image ResolutionBG { get { return resolutionBG; } }
+
     [SerializeField] TextMeshProUGUI resolutionStateInfoText;
     public TextMeshProUGUI ResolutionStateInfoText { get { return resolutionStateInfoText; } }
+
     [SerializeField] TextMeshProUGUI resolutionScoreText;
     public TextMeshProUGUI ResolutionScoreText { get { return resolutionScoreText; } }
 
     [Space]
+
     [SerializeField] TextMeshProUGUI highScoreText;
     public TextMeshProUGUI HighScoreText { get { return highScoreText; } }
 
@@ -74,6 +81,7 @@ public class UIManager : MonoBehaviour
     void UpdateQuestionUI(Question question)
     {
         uIElements.QuestionInfoTextObject.text = question.Info;
+        CreateAnswers(question);
     }
 
     void CreateAnswers (Question question)
@@ -89,7 +97,7 @@ public class UIManager : MonoBehaviour
             newAnswer.Rect.anchoredPosition = new Vector2(0, offset);
 
             offset -= (newAnswer.Rect.sizeDelta.y + parameters.Margins);
-            uIElements.AnswersContentArea.sizeDelta = new Vector2(uIElements.AnswersContentArea.sizeDelta.x, offset*-1);
+            uIElements.AnswersContentArea.sizeDelta = new Vector2(uIElements.AnswersContentArea.sizeDelta.x, offset * -1);
 
             currentAnswers.Add(newAnswer);
 

@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         return Questions[currentQuestion];
     }
+
     int GetRandomQuestionIndex()
     {
         var random = 0;
