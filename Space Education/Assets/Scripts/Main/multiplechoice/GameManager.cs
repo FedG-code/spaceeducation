@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   //cache the startup highscore to compare with score after the game is finished
+        events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
+        
         timerDefaultColor = timerText.color;
         LoadQuestions();
 
@@ -136,6 +138,21 @@ public class GameManager : MonoBehaviour
 
         //Update the score, if the answert of time to wait till next question  is incorrect subtract the addscore value 
         UpdateScore((isCorrect) ? Questions[currentQuestion].AddScore : -Questions[currentQuestion].AddScore);
+
+
+
+
+
+        //check if the game is finished
+        if (IsFinished)
+        {
+            SetHighScore();
+        }
+
+
+
+
+
 
         var type = (IsFinished) ? UIManager.ResolutionScreenType.Finish : (isCorrect) ?
             UIManager.ResolutionScreenType.Correct :
@@ -273,6 +290,24 @@ public class GameManager : MonoBehaviour
             _questions[i] = (Question)objs[i];
         }
     }
+
+
+
+
+
+    // HighScore
+    private void SetHighScore()
+    {
+        var highscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
+        // check if the highscore is less than the current score
+        if (highscore < events.CurrentFinalScore)
+        {
+            PlayerPrefs.SetInt(GameUtility.SavePrefKey, events.CurrentFinalScore);
+        }
+    }
+
+
+
 
     private void UpdateScore(int add)
     {
