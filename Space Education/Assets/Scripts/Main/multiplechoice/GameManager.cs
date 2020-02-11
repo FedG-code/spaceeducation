@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
         timerDefaultColor = timerText.color;
         LoadQuestions();
 
-        
 
         timerStateParaHash = Animator.StringToHash("TimerState");
 

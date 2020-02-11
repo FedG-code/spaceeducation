@@ -167,9 +167,9 @@ MonoBehaviour:
     finishUIElements: {fileID: 2008952246}
   parameters:
     margins: 15
-    correctBGColor: {r: 0, g: 1, b: 0.0625, a: 0}
-    incorrectBGColor: {r: 0.754717, g: 0, b: 0, a: 0}
-    finalBGColor: {r: 0.37065452, g: 0, b: 0.6509434, a: 0}
+    correctBGColor: {r: 0, g: 1, b: 0.0625, a: 1}
+    incorrectBGColor: {r: 0.754717, g: 0, b: 0, a: 1}
+    finalBGColor: {r: 0.37065452, g: 0, b: 0.6509434, a: 1}
 --- !u!114 &15842648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,7 +1620,7 @@ CanvasGroup:
   m_GameObject: {fileID: 479569838}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!95 &479569843
