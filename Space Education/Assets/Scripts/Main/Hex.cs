@@ -23,16 +23,13 @@ public class Hex {
     public readonly int S;
 
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
-
-
+    float radius = 1f;
+   
     bool allowWrapEastWest = true;
     bool allowWrapNorthSouth = false;
 
     public Vector3 Position()
     {
-        float radius = 1f;
-        float height = radius * 2;
-        float width = WIDTH_MULTIPLIER * height;
 
         float vert = HexHeight() * 0.75f;
         float horiz = HexWidth();
