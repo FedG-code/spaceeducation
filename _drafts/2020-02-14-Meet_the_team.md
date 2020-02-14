@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Meet the team
-description: Meet the team
-image: assets/images/pic06.jpg
+description: Introduction to the team
+image: assets/images/group_pic.jpg
 ---
 # this is my title
-**yep**
+
