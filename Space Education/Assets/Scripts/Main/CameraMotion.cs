@@ -21,14 +21,15 @@ public class CameraMotion : MonoBehaviour
     {
 
     }
+    HexComponent[] hexes;
     void CheckIfCameraMoved()
     {
         if (oldPosition != this.transform.position)
         {
             //something moved the camera
             oldPosition = this.transform.position;
-
-            HexComponent[] hexes = GameObject.FindObjectsOfType<HexComponent>();
+            if(hexes == null)
+            hexes = GameObject.FindObjectsOfType<HexComponent>();
 
             foreach(HexComponent hex in hexes)
             {
