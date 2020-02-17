@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1782,6 +1782,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9b80f079920694106ae2caaa53f260e9, type: 2}
   - {fileID: 2100000, guid: 98f302b3e209144028075525c3f87732, type: 2}
   - {fileID: 2100000, guid: 355903b249aea4de9b55dd5e58f588d9, type: 2}
+  numRows: 20
+  numColumns: 20
 --- !u!1 &803900803
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,7 +5321,7 @@ GameObject:
   - component: {fileID: 1686080096}
   - component: {fileID: 1686080097}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Hexagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

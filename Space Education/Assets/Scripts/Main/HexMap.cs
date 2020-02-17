@@ -27,32 +27,43 @@ public class HexMap : MonoBehaviour
             {
                 Hex h = new Hex(column, row);
 
-                GameObject hexGO = (GameObject)Instantiate(HexPrefab, h.Position(),
-                    Quaternion.identity, this.transform);
+                //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
+                Vector3 pos = h.PositionFromCamera(
+                Camera.main.transform.position,
+                numRows,
+                numColumns
+            );
 
-                hexGO.name = "Hex_" + column + "_" + row;
+GameObject hexGO = (GameObject)Instantiate(
+                    HexPrefab,
+                    //Fed: same omission from tutorial
+                    pos,
+                    Quaternion.identity,
+                    this.transform
+            );
+
+                //hexGO.name = "Hex_" + column + "_" + row;
 
                 // Make sure the hex is aware of its place on the map
-                hexGO.GetComponent<HexNew>().column = column;
-                hexGO.GetComponent<HexNew>().row = row;
+                //hexGO.GetComponent<HexNew>().column = column;
+                //hexGO.GetComponent<HexNew>().row = row;
 
                 // For a cleaner hierachy, parent this hex to the map
-                hexGO.transform.SetParent(this.transform);
+                //hexGO.transform.SetParent(this.transform);
 
-
-                hexGO.isStatic = true;
+                hexGO.GetComponent<HexComponent>().Hex = h;
+                hexGO.GetComponent<HexComponent>().HexMap = this;
+                //hexGO.isStatic = true;
 
                 MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
                 mr.material = HexMaterials[UnityEngine.Random.Range(0, HexMaterials.Length)];
 
             }
 
-            
+           
         }
+            //Fed: not useable for our purpose but we'll need something like this for our batching
+        //StaticBatchingUtility.Combine(this.gameObject);
     }
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    
 }
