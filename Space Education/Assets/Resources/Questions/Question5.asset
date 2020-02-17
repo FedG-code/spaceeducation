@@ -10,18 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
-  m_Name: Question
+  m_Name: Question5
   m_EditorClassIdentifier: 
-  _info: "The Half-Life of Uranium-232 is 68.9 years. How much of a 100g U-232 is
-    left after 250 years? Given that t<sub>\xBD</sub> = ln(2)/\u03BB , N(t) = N<sub>0</sub>
-    e<sup>-\u03BBt</sup>."
-  _answers:
-  - _info: 8.2g
-    _isCorrect: 1
-  - _info: 1g
-    _isCorrect: 0
-  - _info: 3g
-    _isCorrect: 0
+  _info: 
+  _answers: []
   _useTimer: 0
   _timer: 0
   _answerType: 0

@@ -3523,9 +3523,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Question
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
-  m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3550,10 +3549,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3588,7 +3587,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2, y: 2, z: 2, w: 2}
+  m_margin: {x: 1.1326718, y: 2, z: 100.286476, w: 2}
   m_textInfo:
     textComponent: {fileID: 1993608541}
     characterCount: 8
