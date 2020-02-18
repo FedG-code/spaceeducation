@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
-  m_Name: Question
+  m_Name: Question9
   m_EditorClassIdentifier: 
-  _info: "The Half-Life of Uranium-232 is 68.9 years. How much of a 100g U-232 is
-    left after 250 years? Given that t<sub>\xBD</sub> = ln(2)/\u03BB , N(t) = N<sub>0</sub>
-    e<sup>-\u03BBt</sup>."
+  _info: 'What is the most distant object used as standard candles cosmologists?
+    Hint: Use the Cosmic Distance Ladder. '
   _answers:
-  - _info: 8.2g
+  - _info: Type Ia Supernovae
     _isCorrect: 1
-  - _info: 6.4g
+  - _info: Cepheid Variable Stars
     _isCorrect: 0
-  - _info: 9.7g
-    _isCorrect: 0
-  - _info: 5.6g
+  - _info: RR-Lyrae Stars
     _isCorrect: 0
   _useTimer: 0
   _timer: 0

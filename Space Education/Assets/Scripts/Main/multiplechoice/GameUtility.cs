@@ -8,4 +8,5 @@ public class GameUtility
 
     public const string SavePrefKey = "Game_Highscore_Value";
 
+    public const string SaveResearchKey = "Research_Value";
 }

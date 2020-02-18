@@ -39,6 +39,9 @@ public struct UIElements
     [SerializeField] TextMeshProUGUI scoreText;
     public TextMeshProUGUI ScoreText { get { return scoreText; } }
 
+    [SerializeField] TextMeshProUGUI points;
+    public TextMeshProUGUI Points { get { return points; } }
+
     [Space]
 
     [SerializeField] Animator resolutionScreenAnimator;
@@ -50,8 +53,12 @@ public struct UIElements
     [SerializeField] TextMeshProUGUI resolutionStateInfoText;
     public TextMeshProUGUI ResolutionStateInfoText { get { return resolutionStateInfoText; } }
 
+
+    // Add a field for UI in the inspector, the text will display the accumulative points after each game.
     [SerializeField] TextMeshProUGUI resolutionScoreText;
     public TextMeshProUGUI ResolutionScoreText { get { return resolutionScoreText; } }
+
+
 
     [Space]
 
@@ -148,11 +155,19 @@ public class UIManager : MonoBehaviour
                 uIElements.ResolutionBG.color = parameters.CorrectBGColor;
                 uIElements.ResolutionStateInfoText.text = "CORRECT!";
                 uIElements.ResolutionScoreText.text = "+" + score;
+
+                // add score to Points if the answer is correct
+                uIElements.Points.text = "+" + score;
+
                 break;
             case ResolutionScreenType.Incorrect:
                 uIElements.ResolutionBG.color = parameters.IncorrectBGColor;
                 uIElements.ResolutionStateInfoText.text = "WRONG!";
                 uIElements.ResolutionScoreText.text = "-" + score;
+
+                // remove score from Points if the answer is incorrect
+                uIElements.Points.text = "-" + score;
+
                 break;
             case ResolutionScreenType.Finish:
                 uIElements.ResolutionBG.color = parameters.FinalBGColor;
@@ -165,6 +180,8 @@ public class UIManager : MonoBehaviour
                 //Check if the highscore is a new highscore
                 uIElements.HighScoreText.text = ((highscore > events.StartupHighscore)
                     ? "<color=yellow>new</color>" : string.Empty) + "Highscore: " + highscore;
+
+                
                 break;
         }
     }
@@ -176,6 +193,9 @@ public class UIManager : MonoBehaviour
         {
             scoreValue++;
             uIElements.ResolutionScoreText.text = scoreValue.ToString();
+
+            //add score to points
+            uIElements.Points.text = scoreValue.ToString();
 
             yield return null;
         }
@@ -210,7 +230,9 @@ public class UIManager : MonoBehaviour
     }
 
     void UpdateScoreUI()
-    {
+    {   // display the current score of the game
         uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
+
+        uIElements.Points.text = "Research Points: " + events.CurrentFinalScore;
     }
 }

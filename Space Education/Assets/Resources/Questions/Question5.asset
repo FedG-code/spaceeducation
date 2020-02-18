@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
   m_Name: Question5
   m_EditorClassIdentifier: 
-  _info: 
-  _answers: []
+  _info: "A ship travelling to Alpha Centauri at 0.95c takes 4.5 years as measured
+    in a stationary frame. How long does it take for the passengers(moving frame)? 
+    t = t<sub>0</sub> \u221A(1-v<sup>2</sup>/c<sup>2</sup>). Hint: moving clock runs
+    slower. "
+  _answers:
+  - _info: 1.41 years
+    _isCorrect: 1
+  - _info: 2.54 years
+    _isCorrect: 0
+  - _info: 1.32 years
+    _isCorrect: 0
+  - _info: 2.83 years
+    _isCorrect: 0
   _useTimer: 0
   _timer: 0
   _answerType: 0

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
-  m_Name: Question
+  m_Name: Question8
   m_EditorClassIdentifier: 
-  _info: "The Half-Life of Uranium-232 is 68.9 years. How much of a 100g U-232 is
-    left after 250 years? Given that t<sub>\xBD</sub> = ln(2)/\u03BB , N(t) = N<sub>0</sub>
-    e<sup>-\u03BBt</sup>."
+  _info: "An aircraft M = 5\xD710<sup>3</sup>kg is in circular orbit of radius 6.47\xD710<sup>2</sup>m,
+    at a velocity 3\xD710<sup>2</sup>ms<sup>-1</sup> around a planet. What is the
+    centripetal force? "
   _answers:
-  - _info: 8.2g
+  - _info: 700kN
     _isCorrect: 1
-  - _info: 6.4g
+  - _info: 550kN
     _isCorrect: 0
-  - _info: 9.7g
+  - _info: 730kN
     _isCorrect: 0
-  - _info: 5.6g
+  - _info: 670kN
     _isCorrect: 0
   _useTimer: 0
   _timer: 0

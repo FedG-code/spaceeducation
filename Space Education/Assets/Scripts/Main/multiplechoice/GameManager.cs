@@ -4,10 +4,11 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
     Question[] _questions = null;
     public Question[] Questions { get { return _questions; } }
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        events.UpdateQuestionAnswer += UpdateAnswers;   
+        events.UpdateQuestionAnswer += UpdateAnswers;
     }
     void OnDisable()
     {
@@ -52,13 +53,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        events.CurrentFinalScore = 0;   
+        events.CurrentFinalScore = 0;
     }
 
     void Start()
-    {   //cache the startup highscore to compare with score after the game is finished
+    {
+        events.ResearchPoints = PlayerPrefs.GetInt(GameUtility.SaveResearchKey);
+        //cache the startup highscore to compare with score after the game is finished
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
-        
+
         timerDefaultColor = timerText.color;
         LoadQuestions();
 
@@ -66,10 +69,10 @@ public class GameManager : MonoBehaviour
         timerStateParaHash = Animator.StringToHash("TimerState");
 
         //generate random value 
-        var seed = UnityEngine.Random.Range(int.MinValue,int.MaxValue);
-        UnityEngine.Random.InitState(seed); 
+        var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
+        UnityEngine.Random.InitState(seed);
 
-       
+
         Display();
     }
 
@@ -79,9 +82,9 @@ public class GameManager : MonoBehaviour
         //and update with a new answer 
         if (Questions[currentQuestion].GetAnswerType == Question.AnswerType.Single)
         {
-            foreach(var answer in PickedAnswers)
+            foreach (var answer in PickedAnswers)
             {
-                if(answer != newAnswer)
+                if (answer != newAnswer)
                 {
                     answer.Reset();
                 }
@@ -109,13 +112,13 @@ public class GameManager : MonoBehaviour
     {
         PickedAnswers = new List<AnswerData>();
     }
-     
+
     void Display()
     {
         EraseAnswers();
         var question = GetRandomQuestion();
 
-        if(events.UpdateQuestionUI != null)
+        if (events.UpdateQuestionUI != null)
         {
             events.UpdateQuestionUI(question);
         }
@@ -147,6 +150,7 @@ public class GameManager : MonoBehaviour
         if (IsFinished)
         {
             SetHighScore();
+            SetResearchScore();
         }
 
 
@@ -198,15 +202,15 @@ public class GameManager : MonoBehaviour
         var totalTime = Questions[currentQuestion].Timer;
         var timeLeft = totalTime;
 
-        timerText.color = timerDefaultColor; 
-        while(timeLeft > 0)
+        timerText.color = timerDefaultColor;
+        while (timeLeft > 0)
         {
-            timeLeft --;
+            timeLeft--;
 
             //change timer color depending on how much time is left
-            if (timeLeft < totalTime / 2 && timeLeft < totalTime /4)
+            if (timeLeft < totalTime / 2 && timeLeft < totalTime / 4)
             {
-                timerText.color = timerHalfWayOutColor ;
+                timerText.color = timerHalfWayOutColor;
             }
             if (timeLeft < totalTime / 4)
             {
@@ -245,7 +249,7 @@ public class GameManager : MonoBehaviour
             do
             {
                 random = UnityEngine.Random.Range(0, Questions.Length);
-            } while (FinishedQuestions.Contains(random) || random == currentQuestion); 
+            } while (FinishedQuestions.Contains(random) || random == currentQuestion);
         }
         return random;
 
@@ -274,10 +278,10 @@ public class GameManager : MonoBehaviour
 
             // if f and s contains elements then it return false
             // if both lists don't contain any element it returns true
-            return !f.Any() && !s.Any(); 
+            return !f.Any() && !s.Any();
         }
         // automatically false if no correct answer is picked
-        return false; 
+        return false;
     }
 
     void LoadQuestions()
@@ -285,7 +289,7 @@ public class GameManager : MonoBehaviour
         // Load all the questions inside the 'Resources'/'Questions' folder
         Object[] objs = Resources.LoadAll("Questions", typeof(Question));
         _questions = new Question[objs.Length];
-        for (int i = 0; i< objs.Length; i++)
+        for (int i = 0; i < objs.Length; i++)
         {
             _questions[i] = (Question)objs[i];
         }
@@ -298,15 +302,22 @@ public class GameManager : MonoBehaviour
     // HighScore
     private void SetHighScore()
     {
+
         var highscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
-        // check if the highscore is less than the current score
+
+        // check if the highscore is less than the current game score
         if (highscore < events.CurrentFinalScore)
-        {
+        {   // save the CurrentFinalScore as highscore
             PlayerPrefs.SetInt(GameUtility.SavePrefKey, events.CurrentFinalScore);
+
         }
     }
 
-
+    // Research Points (add final score to research score)
+    private void SetResearchScore()
+    {
+        PlayerPrefs.SetInt(GameUtility.SaveResearchKey, events.CurrentFinalScore + events.ResearchPoints);
+    }
 
 
     private void UpdateScore(int add)
