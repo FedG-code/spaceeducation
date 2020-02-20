@@ -41,7 +41,7 @@ public class HexMap : MonoBehaviour
     {
         if(hexes == null)
         {
-            Debug.LogError("Hexes array not yeet instantied.");
+            Debug.LogError("Hexes array not yet instantied.");
             return null;
         }
 
@@ -69,18 +69,18 @@ public class HexMap : MonoBehaviour
                 
                 //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
                 Vector3 pos = h.PositionFromCamera(
-                Camera.main.transform.position,
-                numRows,
-                numColumns
-            );
+                    Camera.main.transform.position,
+                    numRows,
+                    numColumns
+                );
 
-GameObject hexGO = (GameObject)Instantiate(
+                GameObject hexGO = (GameObject)Instantiate(
                     HexPrefab,
                     //Fed: same omission from tutorial
                     pos,
                     Quaternion.identity,
                     this.transform
-            );
+                );
 
                 hexToGameObjectMap[h] = hexGO;
                 hexGO.GetComponent<HexComponent>().Hex = h;
@@ -88,12 +88,12 @@ GameObject hexGO = (GameObject)Instantiate(
                 //hexGO.isStatic = true;
                 hexGO.GetComponentInChildren<TextMesh>().text = string.Format("{0},{1}", column, row);
                 
-            }
-
-           
+            }        
         }
+
         UpdateHexVisuals();
-            //Fed: not useable for our purpose but we'll need something like this for our batching
+
+        //Fed: not useable for our purpose but we'll need something like this for our batching
         //StaticBatchingUtility.Combine(this.gameObject);
     }
 
@@ -105,15 +105,19 @@ GameObject hexGO = (GameObject)Instantiate(
             {
                 Hex h = hexes[column, row];
                 GameObject hexGO = hexToGameObjectMap[h];
+                
                 MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
+                
                 if (h.Elevation > 0)
                 {
                     mr.material = MatSun;
+                    Debug.LogError("Mat sun ok");
                 }
                 else
                 {
                     mr.material = MatSpace;
                 }
+                
                 //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
                 MeshFilter mf = hexGO.GetComponentInChildren<MeshFilter>();
                 mf.mesh = TileMesh;

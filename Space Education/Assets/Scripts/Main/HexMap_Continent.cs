@@ -8,7 +8,10 @@ public class HexMap_Continent : HexMap
     {
         base.GenerateMap();
 
-        GenerateSun(56, 10, 4);
+        GenerateSun(8, 8, 4);
+
+        Debug.LogError("override ok");
+
         //Fed: here comes the skipping we're not concerned with meshes 
         UpdateHexVisuals();
     }
@@ -16,17 +19,17 @@ public class HexMap_Continent : HexMap
     void GenerateSun(int q, int r, int radius)
     {
 
-         Hex centerHex = GetHexAt(q, r);
+        Hex centerHex = GetHexAt(q, r);
         //centerHex.Elevation = 1f;
         centerHex.Elevation = 0.5f;
-
-        /*Hex[] areaHexes = GetHexesWithinRadiusOf(centerHex, radius);
+        Debug.LogError("Generate sun okay");
+        Hex[] areaHexes = GetHexesWithinRadiusOf(centerHex, radius);
 
         foreach (Hex h in areaHexes)
         {
-            h.Elevation = 1f;
+            h.Elevation = 1.5f;
         }
-        */
+        
     }
     
 }
