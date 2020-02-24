@@ -40,7 +40,7 @@ public struct UIElements
     public TextMeshProUGUI ScoreText { get { return scoreText; } }
 
     [SerializeField] TextMeshProUGUI points;
-    public TextMeshProUGUI Points { get { return points; } }
+    public TextMeshProUGUI ResearchPoints { get { return points; } }
 
     [Space]
 
@@ -156,8 +156,7 @@ public class UIManager : MonoBehaviour
                 uIElements.ResolutionStateInfoText.text = "CORRECT!";
                 uIElements.ResolutionScoreText.text = "+" + score;
 
-                // add score to Points if the answer is correct
-                uIElements.Points.text = "+" + score;
+                
 
                 break;
             case ResolutionScreenType.Incorrect:
@@ -165,8 +164,7 @@ public class UIManager : MonoBehaviour
                 uIElements.ResolutionStateInfoText.text = "WRONG!";
                 uIElements.ResolutionScoreText.text = "-" + score;
 
-                // remove score from Points if the answer is incorrect
-                uIElements.Points.text = "-" + score;
+               
 
                 break;
             case ResolutionScreenType.Finish:
@@ -195,7 +193,7 @@ public class UIManager : MonoBehaviour
             uIElements.ResolutionScoreText.text = scoreValue.ToString();
 
             //add score to points
-            uIElements.Points.text = scoreValue.ToString();
+            uIElements.ResearchPoints.text = scoreValue.ToString();
 
             yield return null;
         }
@@ -233,6 +231,6 @@ public class UIManager : MonoBehaviour
     {   // display the current score of the game
         uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
 
-        uIElements.Points.text = "Research Points: " + events.CurrentFinalScore;
+        uIElements.ResearchPoints.text = "Research Points: " + events.ResearchPoints;
     }
 }

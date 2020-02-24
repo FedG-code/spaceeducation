@@ -63,6 +63,9 @@ public class GameManager : MonoBehaviour
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
 
         timerDefaultColor = timerText.color;
+
+
+        // instead of loading the question on start we could load the question on update?
         LoadQuestions();
 
 
@@ -284,6 +287,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+
+    //we could make another void loadquestions for different topics, and call the function
+    //when we need to?
     void LoadQuestions()
     {
         // Load all the questions inside the 'Resources'/'Questions' folder
@@ -294,7 +300,6 @@ public class GameManager : MonoBehaviour
             _questions[i] = (Question)objs[i];
         }
     }
-
 
 
 
