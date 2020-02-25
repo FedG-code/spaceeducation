@@ -64,3 +64,4 @@ _site/
 .jekyll-cache
 Gemfile.lock
 *.gem
+*.DS_Store
