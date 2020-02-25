@@ -6,7 +6,7 @@ description: A brief into to the game we plan to make
 
 ![Game play graph](assets/images/20200214_135321.jpg)
 
-<span class="image right"><img src="{% link assets/images/20200225-screener.png %}" alt="" /></span>
+<span class="image right"><img src="{% link assets/images/20200225-screener.jpg %}" alt="" /></span>
 
 # An Introduction To Our Game
 
