@@ -4,10 +4,12 @@ subtitle: Galaxy
 description: A Hex tile strategy game set in space
 baseurl: "/spaceeducation" # the subpath of your site, e.g. /blog
 url: "https://fedg-code.github.io/" # the base hostname & protocol for your site
+hidden_categories: ["minutes"]
 
 # homepage tiles
 tiles-source: posts # accepts "posts" or "pages"
 tiles-count: 3
+
 
 # social settings
 500px_url:
