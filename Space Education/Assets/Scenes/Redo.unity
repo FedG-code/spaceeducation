@@ -174,8 +174,11 @@ MonoBehaviour:
   MatAsteroid: {fileID: 2100000, guid: c5a7d547037168042b365afcaf88a297, type: 2}
   MatPlanet: {fileID: 2100000, guid: 6f67de78031b2054f9a6ef1c4ed9a8e3, type: 2}
   MatEvent: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
-  numRows: 100
-  numColumns: 120
+  MatBadPlanet: {fileID: 0}
+  numRows: 40
+  numColumns: 40
+  allowWrapEastWest: 1
+  allowWrapNorthSouth: 0
 --- !u!1 &1334503519
 GameObject:
   m_ObjectHideFlags: 0
