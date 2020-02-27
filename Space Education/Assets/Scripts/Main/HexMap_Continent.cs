@@ -9,7 +9,7 @@ public class HexMap_Continent : HexMap
         base.GenerateMap();
 
         //small sun
-        GenerateTile(8, 23, 2,HEX.TILE_TYPE.STAR);
+        GenerateTile(8, 23, 2,Hex.TILE_TYPE.STAR);
         //planet tile
         GenerateTile(8, 26, 1,Hex.TILE_TYPE.PLANET);
 
@@ -54,7 +54,8 @@ public class HexMap_Continent : HexMap
     void GenerateTile(int q, int r, int range, Hex.TILE_TYPE tiletype)
     {
 
-        Hex centerHex = GetHexAt(q, r);
+        int tempq = q+1;
+        Hex centerHex = GetHexAt(tempq, r);
         //centerHex.Elevation = 1f;
 
         //Debug.LogError("Generate sun okay");
