@@ -22,7 +22,7 @@ public class Hex {
     public readonly int R; // Row
     public readonly int S;
 
-    public float Elevation;
+    public string tiletype;
     //public float Moisture;
 
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
