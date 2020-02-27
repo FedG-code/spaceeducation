@@ -26,7 +26,7 @@ public class Hex {
 
     public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
 
-    public TILE_TYPES tiletype {get; set;};
+    public TILE_TYPE tiletype {get; set;}
 
     //public float Moisture;
 
