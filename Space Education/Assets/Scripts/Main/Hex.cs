@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class Hex {
 
-   
 
-    public Hex(HexMap hexMap, int q, int r)
+
+    public Hex(HexMap hexMap, int q, int r, TERRAIN_TYPE _)
     {
         this.hexMap = hexMap;
         this.Q = q;
@@ -23,7 +23,10 @@ public class Hex {
     public readonly int R; // Row
     public readonly int S;
 
-    public string tiletype;
+    public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
+
+    public TILE_TYPES tiletype {get; set;};
+
     //public float Moisture;
 
     private HexMap hexMap;
@@ -41,8 +44,8 @@ public class Hex {
         float horiz = HexWidth();
 
         return new Vector3(
-            horiz * (this.Q + this.R / 2f), 
-            0, 
+            horiz * (this.Q + this.R / 2f),
+            0,
             vert * this.R
 
             );
