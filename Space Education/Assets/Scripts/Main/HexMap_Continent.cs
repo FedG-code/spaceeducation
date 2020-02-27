@@ -51,7 +51,7 @@ public class HexMap_Continent : HexMap
     }
     //Fed: what quill calls elevate area I called Generate Tile
     //Fed: tiles seem to be spawning at q-1 from the coordinates we give, odd
-    void GenerateTile(int q, int r, int range, string material)
+    void GenerateTile(int q, int r, int range, Hex.TILE_TYPE tiletype)
     {
 
         Hex centerHex = GetHexAt(q, r);
@@ -62,7 +62,7 @@ public class HexMap_Continent : HexMap
 
         foreach (Hex h in areaHexes)
         {
-            h.tiletype = material;
+            h.tiletype = tiletype;
         }
 
     }
