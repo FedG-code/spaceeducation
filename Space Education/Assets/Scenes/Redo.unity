@@ -170,11 +170,12 @@ MonoBehaviour:
     type: 3}
   MatSpace: {fileID: 2100000, guid: 7924aa11c7b2449efbaabe0fdf9dbd86, type: 2}
   MatBlackHole: {fileID: 2100000, guid: 86e17fbea8585214ba2d354166935929, type: 2}
-  MatSun: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
+  MatStar: {fileID: 2100000, guid: b65cf319f6db24f4e831c2341fbcab79, type: 2}
   MatAsteroid: {fileID: 2100000, guid: c5a7d547037168042b365afcaf88a297, type: 2}
   MatPlanet: {fileID: 2100000, guid: 6f67de78031b2054f9a6ef1c4ed9a8e3, type: 2}
-  numRows: 30
-  numColumns: 60
+  MatEvent: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
+  numRows: 100
+  numColumns: 120
 --- !u!1 &1334503519
 GameObject:
   m_ObjectHideFlags: 0

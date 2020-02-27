@@ -8,26 +8,61 @@ public class HexMap_Continent : HexMap
     {
         base.GenerateMap();
 
-        GenerateSun(8, 8, 4);
+        //small sun
+        GenerateTile(8, 23, 2, "star");
+        //planet tile
+        GenerateTile(8, 26, 1, "planet");
 
-        Debug.LogError("override ok");
+        GenerateTile(6, 30, 1, "planet");
+
+        GenerateTile(12, 29, 1, "planet");
+
+        GenerateTile(15, 24, 1, "event");
+
+        GenerateTile(17, 32, 3, "black hole");
+
+        GenerateTile(5,32, 1, "asteroid");
+
+        GenerateTile (5,33, 1, "asteroid");
+
+        GenerateTile(6,33, 1, "asteroid");
+
+        GenerateTile(6, 34, 1, "asteroid");
+
+        GenerateTile(7,34, 1, "asteroid");
+
+        GenerateTile(8, 34, 1, "asteroid");
+
+        GenerateTile(9, 33, 1, "asteroid");
+
+        GenerateTile(10, 33, 1, "asteroid");
+
+        GenerateTile(11, 33, 1, "asteroid");
+
+        GenerateTile(12, 33, 1, "asteroid");
+
+        GenerateTile(12, 34, 1, "asteroid");
+
+        GenerateTile(13, 34, 1, "asteroid");
+        //Debug.LogError("override ok");
 
         //Fed: here comes the skipping we're not concerned with meshes 
         UpdateHexVisuals();
     }
-    //Fed: what quill calls elevate area
-    void GenerateSun(int q, int r, int radius)
+    //Fed: what quill calls elevate area I called Generate Tile
+    //Fed: tiles seem to be spawning at q-1 from the coordinates we give, odd
+    void GenerateTile(int q, int r, int range, string material)
     {
 
         Hex centerHex = GetHexAt(q, r);
         //centerHex.Elevation = 1f;
-        centerHex.Elevation = 0.5f;
-        Debug.LogError("Generate sun okay");
-        Hex[] areaHexes = GetHexesWithinRadiusOf(centerHex, radius);
+        
+        //Debug.LogError("Generate sun okay");
+        Hex[] areaHexes = GetHexesWithinRadiusOf(centerHex, range);
 
         foreach (Hex h in areaHexes)
         {
-            h.Elevation = 1.5f;
+            h.tiletype = material;
         }
         
     }

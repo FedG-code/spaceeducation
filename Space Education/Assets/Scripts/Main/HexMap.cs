@@ -24,15 +24,19 @@ public class HexMap : MonoBehaviour
 
     public Material MatSpace;
     public Material MatBlackHole;
-    public Material MatSun;
+    public Material MatStar;
     public Material MatAsteroid;
     public Material MatPlanet;
+
+    public Material MatEvent;
+
+    public Material MatBadPlanet;
 
     public int numRows = 30;
     public int numColumns = 60;
 
-    bool allowWrapEastWest = true;
-    bool allowWrapNorthSouth = false;
+    public bool allowWrapEastWest = true;
+    public bool allowWrapNorthSouth = false;
 
     private Hex[,] hexes;
     private Dictionary<Hex, GameObject> hexToGameObjectMap;
@@ -63,8 +67,8 @@ public class HexMap : MonoBehaviour
         {
             for (int row = 0; row < numRows; row++)
             {
-                Hex h = new Hex(column, row);
-                h.Elevation = -1;
+                Hex h = new Hex(this, column, row);
+                //h.tiletype = -1;
                 hexes[column, row] = h;
                 
                 //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
@@ -94,7 +98,7 @@ public class HexMap : MonoBehaviour
         UpdateHexVisuals();
 
         //Fed: not useable for our purpose but we'll need something like this for our batching
-        //StaticBatchingUtility.Combine(this.gameObject);
+        StaticBatchingUtility.Combine(this.gameObject);
     }
 
     public void UpdateHexVisuals()
@@ -107,15 +111,37 @@ public class HexMap : MonoBehaviour
                 GameObject hexGO = hexToGameObjectMap[h];
                 
                 MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
+                //ideally will convert the value for h.Elevation to a string soon but atm it's just connected to different values
+                //we have a switch instead of if statement because wee don't need a range in our values
+                switch (h.tiletype)
+                {
+                    case "star":
+                    mr.material = MatStar;
+                    break;
                 
-                if (h.Elevation > 0)
-                {
-                    mr.material = MatSun;
-                    Debug.LogError("Mat sun ok");
-                }
-                else
-                {
+                    case "planet":
+                    mr.material = MatPlanet;
+                    break;
+
+                    case "asteroid":
+                    mr.material = MatAsteroid;
+                    break;
+
+                    case "event":
+                    mr.material = MatEvent;
+                    break;
+
+                    case "black hole":
+                    mr.material = MatBlackHole;
+                    break;
+
+                    case "bad planet":
+                    mr.material = MatBadPlanet;
+                    break;
+
+                    default:
                     mr.material = MatSpace;
+                    break;
                 }
                 
                 //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
@@ -125,14 +151,14 @@ public class HexMap : MonoBehaviour
         }
     }
 
-     public Hex[] GetHexesWithinRadiusOf(Hex centerHex, int radius)
+     public Hex[] GetHexesWithinRadiusOf(Hex centerHex, int range)
     {
         List<Hex> results = new List<Hex>();
-        for (int dx = -radius; dx < radius-1; dx++)
+        for (int dx = -range; dx < range-1; dx++)
         {
 
 
-            for (int dy = Mathf.Max(-radius+1, -dx - radius); dy < Mathf.Min(radius, -dx + radius-1); dy++)
+            for (int dy = Mathf.Max(-range+1, -dx - range); dy < Mathf.Min(range, -dx + range-1); dy++)
             {
                 results.Add(hexes[centerHex.Q + dx, centerHex.R + dy]);
             }
