@@ -35,8 +35,8 @@ public class HexMap : MonoBehaviour
     public int numRows = 30;
     public int numColumns = 60;
 
-    bool allowWrapEastWest = true;
-    bool allowWrapNorthSouth = false;
+    public bool allowWrapEastWest = true;
+    public bool allowWrapNorthSouth = false;
 
     private Hex[,] hexes;
     private Dictionary<Hex, GameObject> hexToGameObjectMap;
@@ -67,7 +67,7 @@ public class HexMap : MonoBehaviour
         {
             for (int row = 0; row < numRows; row++)
             {
-                Hex h = new Hex(column, row);
+                Hex h = new Hex(this, column, row);
                 //h.tiletype = -1;
                 hexes[column, row] = h;
                 
