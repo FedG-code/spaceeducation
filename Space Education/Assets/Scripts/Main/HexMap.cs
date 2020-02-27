@@ -8,7 +8,7 @@ public class HexMap : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start(){
-        GenerateMap();   
+        GenerateMap();
     }
 
     public GameObject HexPrefab;
@@ -70,7 +70,7 @@ public class HexMap : MonoBehaviour
                 Hex h = new Hex(this, column, row);
                 //h.tiletype = -1;
                 hexes[column, row] = h;
-                
+
                 //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
                 Vector3 pos = h.PositionFromCamera(
                     Camera.main.transform.position,
@@ -91,8 +91,8 @@ public class HexMap : MonoBehaviour
                 hexGO.GetComponent<HexComponent>().HexMap = this;
                 //hexGO.isStatic = true;
                 hexGO.GetComponentInChildren<TextMesh>().text = string.Format("{0},{1}", column, row);
-                
-            }        
+
+            }
         }
 
         UpdateHexVisuals();
@@ -109,33 +109,33 @@ public class HexMap : MonoBehaviour
             {
                 Hex h = hexes[column, row];
                 GameObject hexGO = hexToGameObjectMap[h];
-                
+
                 MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
                 //ideally will convert the value for h.Elevation to a string soon but atm it's just connected to different values
                 //we have a switch instead of if statement because wee don't need a range in our values
                 switch (h.tiletype)
                 {
-                    case "star":
+                    case Hex.TILE_TYPE.STAR:
                     mr.material = MatStar;
                     break;
-                
-                    case "planet":
+
+                    case Hex.TILE_TYPE.PLANET:
                     mr.material = MatPlanet;
                     break;
 
-                    case "asteroid":
+                    case Hex.TILE_TYPE.ASTEROID:
                     mr.material = MatAsteroid;
                     break;
 
-                    case "event":
+                    case Hex.TILE_TYPE.EVENT:
                     mr.material = MatEvent;
                     break;
 
-                    case "black hole":
+                    case Hex.TILE_TYPE.BLACKHOLE:
                     mr.material = MatBlackHole;
                     break;
 
-                    case "bad planet":
+                    case Hex.TILE_TYPE.BADPLANET:
                     mr.material = MatBadPlanet;
                     break;
 
@@ -143,7 +143,7 @@ public class HexMap : MonoBehaviour
                     mr.material = MatSpace;
                     break;
                 }
-                
+
                 //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
                 MeshFilter mf = hexGO.GetComponentInChildren<MeshFilter>();
                 mf.mesh = TileMesh;
@@ -166,5 +166,5 @@ public class HexMap : MonoBehaviour
         }
         return results.ToArray();
     }
-    
+
 }
