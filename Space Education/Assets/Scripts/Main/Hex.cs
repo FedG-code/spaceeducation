@@ -8,12 +8,13 @@ public class Hex {
 
 
 
-    public Hex(HexMap hexMap, int q, int r, TERRAIN_TYPE _)
+    public Hex(HexMap hexMap, int q, int r, TILE_TYPE _tiletype = TILE_TYPE.SPACE)
     {
         this.hexMap = hexMap;
         this.Q = q;
         this.R = r;
         this.S = -(q + r);
+        this.tiletype = _tiletype;
 
     }
 
