@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class Hex {
 
-   
 
-    public Hex(int q, int r)
+
+    public Hex(HexMap hexMap, int q, int r, TILE_TYPE _tiletype = TILE_TYPE.SPACE)
     {
+        this.hexMap = hexMap;
         this.Q = q;
         this.R = r;
         this.S = -(q + r);
+        this.tiletype = _tiletype;
 
     }
 
@@ -22,11 +24,19 @@ public class Hex {
     public readonly int R; // Row
     public readonly int S;
 
+    public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
+
+    public TILE_TYPE tiletype {get; set;}
+
+    //public float Moisture;
+
+    private HexMap hexMap;
+
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
     float radius = 1f;
-   
-    bool allowWrapEastWest = true;
-    bool allowWrapNorthSouth = false;
+
+    //bool allowWrapEastWest = true;
+    //bool allowWrapNorthSouth = false;
 
     public Vector3 Position()
     {
@@ -35,8 +45,8 @@ public class Hex {
         float horiz = HexWidth();
 
         return new Vector3(
-            horiz * (this.Q + this.R / 2f), 
-            0, 
+            horiz * (this.Q + this.R / 2f),
+            0,
             vert * this.R
 
             );
@@ -69,7 +79,7 @@ public class Hex {
 
         Vector3 position = Position();
 
-        if (allowWrapEastWest)
+        if (hexMap.allowWrapEastWest)
         {
 
             float mapWidth = numColumns * HexHorizontalSpacing();
@@ -86,7 +96,7 @@ public class Hex {
             position.x -= howManyWidthToFix * mapWidth;
         }
 
-        if (allowWrapNorthSouth)
+        if (hexMap.allowWrapNorthSouth)
         {
 
             float mapWidth = numColumns * HexHorizontalSpacing();
@@ -105,5 +115,26 @@ public class Hex {
         return position;
 
     }
+       /* public static float Distance (Hex a, Hex b)
+        {
+            int dQ = Mathf.Abs(a.Q-b.Q);
+            if(a.hexMap.allowWrapEastWest){
+            if(dQ> hexMap.numColumns/2)
+            dQ = hexMap.numColumns - dQ;
+            }
 
+            int dR = Mathf.Abs(a.R-b.R);
+            if(a.hexMap.allowWrapNorthSouth){
+            if(dR> hexMap.numRows/2)
+            dR = hexMap.numRows - dR;
+            }
+            return
+                Mathf.Max
+                (
+                    dQ,
+                    dR,
+                    Mathf.Abs(a.S-b.S)
+                );
+        }
+        */
 }
