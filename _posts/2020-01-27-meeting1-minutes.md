@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Meeting 1- 11am-12pm Monday 27th Jan 2020
+title: Meeting 1
 location: Library room 6
 categories: [minutes]
 Apologies: Ben Smith
