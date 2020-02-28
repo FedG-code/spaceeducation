@@ -44,6 +44,43 @@ public class HexMap_Continent : HexMap
         GenerateTile(12, 34, 1,Hex.TILE_TYPE.ASTEROID);
 
         GenerateTile(13, 34, 1,Hex.TILE_TYPE.ASTEROID);
+
+         GenerateTile(11 ,20, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(11,21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(12,21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(12, 22, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(13,22, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(14, 22, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(15, 21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(16, 21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(17, 21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(18, 21, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(18, 22, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(19, 22, 1,Hex.TILE_TYPE.ASTEROID);
+
+        GenerateTile(17, 19, 1, Hex.TILE_TYPE.BADPLANET);
+
+        GenerateTile(21, 24, 1, Hex.TILE_TYPE.EVENT);
+
+        GenerateTile(7, 36, 1, Hex.TILE_TYPE.PLANET);
+
+        GenerateTile (9, 36, 1, Hex.TILE_TYPE.PLANET);
+
+        GenerateTile(3, 17, 3, Hex.TILE_TYPE.BLACKHOLE);
+
+        GenerateTile(28, 17, 2, Hex.TILE_TYPE.STAR);
+
         //Debug.LogError(override ok);
 
         //Fed: here comes the skipping we're not concerned with meshes
