@@ -1,6 +1,6 @@
 ---
-layout: page
-title: "Games Project Outline"
+layout: post
+title: "Project Outline"
 nav-menu: true
 ---
 
