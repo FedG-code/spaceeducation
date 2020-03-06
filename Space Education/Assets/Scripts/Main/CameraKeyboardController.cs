@@ -1,27 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraKeyboardController : MonoBehaviour {
-
-    // Use this for initialization
-    void Start () {
+public class CameraKeyboardController : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
         
     }
 
-    float moveSpeed = 3.5f;
-    
+    float moveSpeed = 25;
+
     // Update is called once per frame
-    void Update () {
-        
+    void Update()
+    {
         Vector3 translate = new Vector3
             (
-                Input.GetAxis("Horizontal"),
-                0,
-                Input.GetAxis("Vertical")
+               Input.GetAxis("Horizontal"),
+               0,
+               Input.GetAxis("Vertical")
             );
-
-        this.transform.Translate( translate * moveSpeed * Time.deltaTime * (1 + this.transform.position.y / 2), Space.World);
-
+        this.transform.Translate(translate * moveSpeed * Time.deltaTime, Space.World);
     }
 }
