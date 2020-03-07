@@ -128,6 +128,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1671159670, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
+      propertyPath: numRows
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671159670, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
+      propertyPath: numColumns
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 221645042692420964, guid: 0be8ec528789c48929168aa477cf38cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,6 +195,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HexMap_continent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
+        type: 3}
+      propertyPath: numRows
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
+        type: 3}
+      propertyPath: numColumns
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}

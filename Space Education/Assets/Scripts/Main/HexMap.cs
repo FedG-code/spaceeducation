@@ -33,8 +33,8 @@ public class HexMap : MonoBehaviour
 
     public Material MatBadPlanet;
 
-    public int numRows = 30;
-    public int numColumns = 60;
+    public int numRows = 40;
+    public int numColumns = 40;
 
     public bool allowWrapEastWest = true;
     public bool allowWrapNorthSouth = false;

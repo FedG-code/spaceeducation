@@ -7,10 +7,11 @@ public class HexMap_Continent : HexMap
     override public void GenerateMap()
     {
         base.GenerateMap();
-        
+
+        GenerateTile(0, 0, 0,HexTileBase.TILE_TYPE.SPACE);
         //small sun
         GenerateTile(8, 23, 2,HexTileBase.TILE_TYPE.STAR);
-       
+
         //planet tile
         GenerateTile(8, 26, 0,HexTileBase.TILE_TYPE.PLANET);
 
@@ -60,13 +61,13 @@ public class HexMap_Continent : HexMap
         int tempq = q+1;
         // Get the Space tile at the location specified
         HexTileBase centerHex = GetHexAt(tempq, r);
-        // Get a new tile of the specified type from the factory 
+        // Get a new tile of the specified type from the factory
         HexTileBase newTile = factory.GetTile(this, centerHex.Q, centerHex.R, tiletype, centerHex.GameObject);
         // set the new tile's gameObject to that of the tile being replaced
         newTile.GameObject = centerHex.GameObject;
         // Replace the tile
-        hexes[centerHex.Q, centerHex.R] = newTile;       
-   
+        hexes[centerHex.Q, centerHex.R] = newTile;
+
         // Get the tiles around it within the specified radius
         List<HexTileBase> areaHexes = GetHexesWithinRadiusOf(centerHex, range);
 
