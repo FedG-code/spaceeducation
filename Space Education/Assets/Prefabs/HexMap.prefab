@@ -47,7 +47,7 @@ MonoBehaviour:
     type: 3}
   TileMesh: {fileID: 2534964839176971238, guid: f41926a2dace64eee830b4e0a8283c5a,
     type: 3}
-  MatSpace: {fileID: 2100000, guid: 7924aa11c7b2449efbaabe0fdf9dbd86, type: 2}
+  MatSpace: {fileID: 2100000, guid: b5f48d3f9a3ccb043964e1cfeb8c06a6, type: 2}
   MatBlackHole: {fileID: 2100000, guid: 86e17fbea8585214ba2d354166935929, type: 2}
   MatStar: {fileID: 2100000, guid: b65cf319f6db24f4e831c2341fbcab79, type: 2}
   MatAsteroid: {fileID: 2100000, guid: c5a7d547037168042b365afcaf88a297, type: 2}

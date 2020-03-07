@@ -23,8 +23,8 @@ MonoBehaviour:
   MatPlanet: {fileID: 2100000, guid: 6f67de78031b2054f9a6ef1c4ed9a8e3, type: 2}
   MatEvent: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
   MatBadPlanet: {fileID: 2100000, guid: c7b033d22a6f24c42a0693197eefb472, type: 2}
-  numRows: 30
-  numColumns: 60
+  numRows: 40
+  numColumns: 40
   allowWrapEastWest: 1
   allowWrapNorthSouth: 0
 --- !u!1001 &1334653209921812192
@@ -42,17 +42,17 @@ PrefabInstance:
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: numRows
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: numColumns
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 1267434507176313733, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: m_Name
-      value: HexMap_continent Variant
+      value: HexMap_continent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8976cea9e925a4bcdba579e22828781e, type: 3}
