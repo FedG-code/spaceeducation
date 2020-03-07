@@ -46,7 +46,7 @@ public class MouseManager : MonoBehaviour {
 			//Debug.Log("Clicked On: " + ourHitObject.name);
 
 			// So...what kind of object are we over?
-			if(ourHitObject.GetComponent<HexNew>() != null) {
+			if(ourHitObject.GetComponent<HexTileBase>() != null) {
 				// Ah! We are over a hex!
 				MouseOver_Hex(ourHitObject);
 			}
@@ -79,6 +79,13 @@ public class MouseManager : MonoBehaviour {
 
 		if(Input.GetMouseButtonDown(0)) {
 
+			IHexTile clickedTile = ourHitObject.GetComponent<IHexTile>();
+			if (clickedTile.PlayerCanMoveHere())
+			{
+				// Move the ship to this tile...
+				// Then do whatever happens when you land on this tile...
+				clickedTile.DoAction();
+			}
 			// We have clicked on a hex.  Do something about it!
 			// This might involve calling a bunch of other functions
 			// depending on what mode you happen to be in, in your game.

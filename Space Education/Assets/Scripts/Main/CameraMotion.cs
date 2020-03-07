@@ -17,7 +17,7 @@ public class CameraMotion : MonoBehaviour
         CheckIfCameraMoved();
     }
 
-    public void PanToHex(Hex hex)
+    public void PanToHex(HexTileBase hex)
     {
 
     }
