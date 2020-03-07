@@ -131,12 +131,27 @@ PrefabInstance:
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: allowWrapNorthSouth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
+        type: 3}
+      propertyPath: numRows
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
+        type: 3}
+      propertyPath: numColumns
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e,
+        type: 3}
+      propertyPath: allowWrapEastWest
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1267434507176313732, guid: 8976cea9e925a4bcdba579e22828781e,
         type: 3}
@@ -198,8 +213,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexMap_continent
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -5524864400329575121, guid: 8976cea9e925a4bcdba579e22828781e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8976cea9e925a4bcdba579e22828781e, type: 3}
 --- !u!1 &1671159667 stripped
 GameObject:
@@ -230,8 +244,8 @@ MonoBehaviour:
   MatPlanet: {fileID: 2100000, guid: 6f67de78031b2054f9a6ef1c4ed9a8e3, type: 2}
   MatEvent: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
   MatBadPlanet: {fileID: 2100000, guid: c7b033d22a6f24c42a0693197eefb472, type: 2}
-  numRows: 30
-  numColumns: 60
+  numRows: 40
+  numColumns: 40
   allowWrapEastWest: 1
   allowWrapNorthSouth: 0
 --- !u!1001 &2304482026348243003
