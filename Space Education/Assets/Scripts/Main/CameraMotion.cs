@@ -11,13 +11,15 @@ public class CameraMotion : MonoBehaviour
     }
     Vector3 oldPosition;
     // Update is called once per frame
-    /*void Update()
-    {
-        //TODO: click and drag, wasd, zoom
-        CheckIfCameraMoved();
-    }
-    */
-    public void PanToHex(Hex hex)
+    /**
+        void Update()
+        {
+            //TODO: click and drag, wasd, zoom
+            CheckIfCameraMoved();
+        }
+    **/
+
+    public void PanToHex(HexTileBase hex)
     {
 
     }
@@ -37,5 +39,5 @@ public class CameraMotion : MonoBehaviour
             }
         }
     }
-    
+
 }

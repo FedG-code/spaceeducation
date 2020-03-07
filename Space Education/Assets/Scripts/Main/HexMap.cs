@@ -7,7 +7,8 @@ using Random = System.Random;
 public class HexMap : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
         GenerateMap();
     }
 
@@ -38,12 +39,13 @@ public class HexMap : MonoBehaviour
     public bool allowWrapEastWest = true;
     public bool allowWrapNorthSouth = false;
 
-    private Hex[,] hexes;
-    private Dictionary<Hex, GameObject> hexToGameObjectMap;
+    public HexTileBase[,] hexes { get; set; }
 
-    public Hex GetHexAt(int x, int y)
+    private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
+
+    public HexTileBase GetHexAt(int x, int y)
     {
-        if(hexes == null)
+        if (hexes == null)
         {
             Debug.LogError("Hexes array not yet instantied.");
             return null;
@@ -59,19 +61,18 @@ public class HexMap : MonoBehaviour
 
     virtual public void GenerateMap()
     {
-        hexes = new Hex[numColumns, numRows];
-        hexToGameObjectMap = new Dictionary<Hex, GameObject>();
-
+        hexes = new HexTileBase[numColumns, numRows];
+        hexToGameObjectMap = new Dictionary<HexTileBase, GameObject>();
         //Generate totally random map
-        for (int column = 0; column < numColumns ; column++)
+        for (int column = 0; column < numColumns; column++)
         {
             for (int row = 0; row < numRows; row++)
             {
-                Hex h = new Hex(this, column, row);
+                //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
+                SpaceTile h = new SpaceTile(this, column, row);
                 //h.tiletype = -1;
                 hexes[column, row] = h;
 
-                //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
                 Vector3 pos = h.PositionFromCamera(
                     Camera.main.transform.position,
                     numRows,
@@ -85,7 +86,9 @@ public class HexMap : MonoBehaviour
                     Quaternion.identity,
                     this.transform
                 );
-
+                h.GameObject = hexGO;
+                MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
+                mr.material = MatSpace;
                 hexToGameObjectMap[h] = hexGO;
                 hexGO.GetComponent<HexComponent>().Hex = h;
                 hexGO.GetComponent<HexComponent>().HexMap = this;
@@ -95,76 +98,74 @@ public class HexMap : MonoBehaviour
             }
         }
 
-        UpdateHexVisuals();
+       // UpdateHexVisuals();
 
         //Fed: not useable for our purpose but we'll need something like this for our batching
         StaticBatchingUtility.Combine(this.gameObject);
     }
 
-    public void UpdateHexVisuals()
+    //public void UpdateHexVisuals()
+    //{
+    //    for (int column = 0; column < numColumns; column++)
+    //    {
+    //        for (int row = 0; row < numRows; row++)
+    //        {
+    //            HexTileBase h = hexes[column, row];
+    //            GameObject hexGO = hexToGameObjectMap[h];
+
+    //            MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
+    //            //ideally will convert the value for h.Elevation to a string soon but atm it's just connected to different values
+    //            //we have a switch instead of if statement because wee don't need a range in our values
+    //            switch (h.tiletype)
+    //            {
+    //                case HexTileBase.TILE_TYPE.STAR:
+    //                    mr.material = MatStar;
+    //                    break;
+
+    //                case HexTileBase.TILE_TYPE.PLANET:
+    //                    mr.material = MatPlanet;
+    //                    break;
+
+    //                case HexTileBase.TILE_TYPE.ASTEROID:
+    //                    mr.material = MatAsteroid;
+    //                    break;
+
+    //                case HexTileBase.TILE_TYPE.EVENT:
+    //                    mr.material = MatEvent;
+    //                    break;
+
+    //                case HexTileBase.TILE_TYPE.BLACKHOLE:
+    //                    mr.material = MatBlackHole;
+    //                    break;
+
+    //                case HexTileBase.TILE_TYPE.BADPLANET:
+    //                    mr.material = MatBadPlanet;
+    //                    break;
+
+    //                default:
+    //                    mr.material = MatSpace;
+    //                    break;
+    //            }
+
+    //            //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
+    //            MeshFilter mf = hexGO.GetComponentInChildren<MeshFilter>();
+    //            mf.mesh = TileMesh;
+    //        }
+    //    }
+    //}
+
+    public List<HexTileBase> GetHexesWithinRadiusOf(HexTileBase centerHex, int range)
     {
-        for (int column = 0; column < numColumns; column++)
+        List<HexTileBase> results = new List<HexTileBase>();
+        for (int dx = -range; dx < range - 1; dx++)
         {
-            for (int row = 0; row < numRows; row++)
-            {
-                Hex h = hexes[column, row];
-                GameObject hexGO = hexToGameObjectMap[h];
-
-                MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
-                //ideally will convert the value for h.Elevation to a string soon but atm it's just connected to different values
-                //we have a switch instead of if statement because wee don't need a range in our values
-                switch (h.tiletype)
-                {
-                    case Hex.TILE_TYPE.STAR:
-                    mr.material = MatStar;
-                    break;
-
-                    case Hex.TILE_TYPE.PLANET:
-                    mr.material = MatPlanet;
-                    break;
-
-                    case Hex.TILE_TYPE.ASTEROID:
-                    mr.material = MatAsteroid;
-                    break;
-
-                    case Hex.TILE_TYPE.EVENT:
-                    mr.material = MatEvent;
-                    break;
-
-                    case Hex.TILE_TYPE.BLACKHOLE:
-                    mr.material = MatBlackHole;
-                    break;
-
-                    case Hex.TILE_TYPE.BADPLANET:
-                    mr.material = MatBadPlanet;
-                    break;
-
-                    default:
-                    mr.material = MatSpace;
-                    break;
-                }
-
-                //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
-                MeshFilter mf = hexGO.GetComponentInChildren<MeshFilter>();
-                mf.mesh = TileMesh;
-            }
-        }
-    }
-
-     public Hex[] GetHexesWithinRadiusOf(Hex centerHex, int range)
-    {
-        List<Hex> results = new List<Hex>();
-        for (int dx = -range; dx < range-1; dx++)
-        {
-
-
-            for (int dy = Mathf.Max(-range+1, -dx - range); dy < Mathf.Min(range, -dx + range-1); dy++)
+            for (int dy = Mathf.Max(-range + 1, -dx - range); dy < Mathf.Min(range, -dx + range - 1); dy++)
             {
                 results.Add(hexes[centerHex.Q + dx, centerHex.R + dy]);
             }
 
         }
-        return results.ToArray();
+        return results;
     }
 
 }

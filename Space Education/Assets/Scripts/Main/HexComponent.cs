@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HexComponent : MonoBehaviour
 {
-    public Hex Hex;
+    public HexTileBase Hex;
     public HexMap HexMap;
     public void UpdatePosition()
     {
