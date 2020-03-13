@@ -16,7 +16,7 @@ public class HexMap : MonoBehaviour
 
     // Samuel: Current player / unit. This has been manually sected, by dragging
     // the unit gameobject into this field
-    public GameObject SelectedUnit;
+    public GameObject selectedUnit;
 
     /*
      * Fed: we don't need to concern ourselves with meshs as we don't have water
@@ -97,6 +97,7 @@ public class HexMap : MonoBehaviour
                 ClickableTile ct = hexGO.GetComponent<ClickableTile>();
                 ct.tileQ = column;
                 ct.tileR = row;
+                ct.map = this;
 
                 h.GameObject = hexGO;
                 MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
@@ -185,8 +186,9 @@ public class HexMap : MonoBehaviour
      * Author: Samuel Overington
      * Function to connect to component ClickableTile.cs
      * NB Currently unit (player), is permanently selected
-     * (see GameObject SelectedUnit in the head of this file)
+     * (see GameObject selectedUnit in the head of this file)
      **/
+     selectedUnit.transform.position = new Vector3(Q, R, 0);
 
     }
 
