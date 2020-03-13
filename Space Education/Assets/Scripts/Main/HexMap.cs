@@ -188,7 +188,10 @@ public class HexMap : MonoBehaviour
      * NB Currently unit (player), is permanently selected
      * (see GameObject selectedUnit in the head of this file)
      **/
-     selectedUnit.transform.position = new Vector3(Q, R, 0);
+
+     HexTileBase h = GetHexAt(Q,R);
+     selectedUnit.transform.position = h.Position();
+     Debug.Log(string.Format("Moving to {0}, {1}", Q, R));
 
     }
 
