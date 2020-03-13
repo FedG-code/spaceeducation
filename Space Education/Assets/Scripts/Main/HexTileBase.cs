@@ -4,15 +4,15 @@ using UnityEngine;
 
 
 
-public class HexTileBase 
+public class HexTileBase
 {
-   
+
     public HexTileBase(HexMap hexMap, int q, int r)
     {
         this.hexMap = hexMap;
-        this.Q = q;
-        this.R = r;
-        this.S = -(q + r);
+        this.Q = q;        // Column
+        this.R = r;        // Row
+        this.S = -(q + r); // Something
 
 
 

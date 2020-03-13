@@ -14,7 +14,13 @@ public class HexMap : MonoBehaviour
 
     public GameObject HexPrefab;
 
-    /*Fed: we don't need to concern ourselves with meshs as we don't have water stuff, might be useful later on leaving it here commented
+    // Samuel: Current player / unit. This has been manually sected, by dragging
+    // the unit gameobject into this field
+    public GameObject SelectedUnit;
+
+    /*
+     * Fed: we don't need to concern ourselves with meshs as we don't have water
+     * stuff, might be useful later on leaving it here commented
      * public Mesh MeshWater;
      * public Mesh MesFlat;
      * public Mesh MeshHill;
@@ -86,6 +92,12 @@ public class HexMap : MonoBehaviour
                     Quaternion.identity,
                     this.transform
                 );
+
+                // Samuel: Get clickable tile component from hex prefab
+                ClickableTile ct = hexGO.GetComponent<ClickableTile>();
+                ct.tileQ = column;
+                ct.tileR = row;
+
                 h.GameObject = hexGO;
                 MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
                 mr.material = MatSpace;
@@ -166,6 +178,16 @@ public class HexMap : MonoBehaviour
 
         }
         return results;
+    }
+
+    public void MoveSelectedUnitTo(int Q, int R) {
+    /**
+     * Author: Samuel Overington
+     * Function to connect to component ClickableTile.cs
+     * NB Currently unit (player), is permanently selected
+     * (see GameObject SelectedUnit in the head of this file)
+     **/
+
     }
 
 }
