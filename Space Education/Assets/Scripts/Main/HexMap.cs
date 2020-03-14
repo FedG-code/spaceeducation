@@ -33,6 +33,8 @@ public class HexMap : MonoBehaviour
 
     public Material MatBadPlanet;
 
+    public GameObject UnitResourceShipPrefab;
+
     public int numRows = 40;
     public int numColumns = 40;
 
@@ -167,5 +169,10 @@ public class HexMap : MonoBehaviour
         }
         return results;
     }
+    public void SpawnUnitAt(GameObject prefab, int x, int y)
+    {
+        GameObject myHex = hexToGameObjectMap[GetHexAt(x, y)];
 
+        Instantiate(prefab, myHex.transform.position, Quaternion.identity, myHex.transform);
+    }
 }

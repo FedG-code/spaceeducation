@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: numColumns
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1671159670, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
+      propertyPath: UnitResourceShipPrefab
+      value: 
+      objectReference: {fileID: 1718406266474456, guid: d1ccc45dbb5133a40938f229f5052c6e,
+        type: 3}
     - target: {fileID: 221645042692420964, guid: 0be8ec528789c48929168aa477cf38cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -211,6 +216,12 @@ PrefabInstance:
       propertyPath: numColumns
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
+        type: 3}
+      propertyPath: UnitResourceShipPrefab
+      value: 
+      objectReference: {fileID: 1718406266474456, guid: d1ccc45dbb5133a40938f229f5052c6e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
 --- !u!1001 &2304482026348243003

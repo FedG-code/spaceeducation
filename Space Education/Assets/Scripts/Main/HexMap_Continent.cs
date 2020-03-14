@@ -47,6 +47,8 @@ public class HexMap_Continent : HexMap
 
         GenerateTile(13, 34, 0,HexTileBase.TILE_TYPE.ASTEROID);
 
+        SpawnUnitAt(UnitResourceShipPrefab, 9, 26);
+
         //Debug.LogError(override ok);
 
         //Fed: here comes the skipping we're not concerned with meshes
