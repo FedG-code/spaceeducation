@@ -169,10 +169,12 @@ public class HexMap : MonoBehaviour
         }
         return results;
     }
-    public void SpawnUnitAt(GameObject prefab, int x, int y)
+    public void SpawnUnitAt(GameObject prefab, int Q, int R)
     {
-        GameObject myHex = hexToGameObjectMap[GetHexAt(x, y)];
 
-        Instantiate(prefab, myHex.transform.position, Quaternion.identity, myHex.transform);
+        // hexToGameObjectMap[GetHexAt(x, y)] = ;
+        HexTileBase h = GetHexAt(Q, R);
+
+        Instantiate(prefab, h.Position(), Quaternion.identity);
     }
 }
