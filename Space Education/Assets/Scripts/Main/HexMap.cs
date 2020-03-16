@@ -39,6 +39,8 @@ public class HexMap : MonoBehaviour
 
     public Material MatBadPlanet;
 
+    public GameObject UnitResourceShipPrefab;
+
     public int numRows = 40;
     public int numColumns = 40;
 
@@ -180,7 +182,14 @@ public class HexMap : MonoBehaviour
         }
         return results;
     }
+    public void SpawnUnitAt(GameObject prefab, int Q, int R)
+    {
 
+        // hexToGameObjectMap[GetHexAt(x, y)] = ;
+        HexTileBase h = GetHexAt(Q, R);
+
+        Instantiate(prefab, h.Position(), Quaternion.identity);
+    }
     public void MoveSelectedUnitTo(int Q, int R) {
     /**
      * Author: Samuel Overington
