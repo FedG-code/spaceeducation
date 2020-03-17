@@ -47,7 +47,8 @@ public class HexMap_Continent : HexMap
 
         GenerateTile(13, 34, 0,HexTileBase.TILE_TYPE.ASTEROID);
 
-        SpawnUnitAt(UnitResourceShipPrefab, 9, 26);
+        // MoveSelectedUnitTo(9,26);
+        // SpawnUnitAt(selectedUnit, 9, 26);
 
         //Debug.LogError(override ok);
 
@@ -60,9 +61,9 @@ public class HexMap_Continent : HexMap
     {
         // New Tile Fasctory to create the tiles
         TileFactory factory = new TileFactory();
-        int tempq = q+1;
+
         // Get the Space tile at the location specified
-        HexTileBase centerHex = GetHexAt(tempq, r);
+        HexTileBase centerHex = GetHexAt(q+1, r);
         // Get a new tile of the specified type from the factory
         HexTileBase newTile = factory.GetTile(this, centerHex.Q, centerHex.R, tiletype, centerHex.GameObject);
         // set the new tile's gameObject to that of the tile being replaced

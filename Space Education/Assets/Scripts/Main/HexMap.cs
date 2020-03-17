@@ -6,17 +6,21 @@ using Random = System.Random;
 
 public class HexMap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        GenerateMap();
-    }
-
-    public GameObject HexPrefab;
 
     // Samuel: Current player / unit. This has been manually sected, by dragging
     // the unit gameobject into this field
     public GameObject selectedUnit;
+
+    public GameObject HexPrefab;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        GenerateMap();
+        SpawnUnitAt(this.selectedUnit, 0,0);
+        MoveSelectedUnitTo(9,26);
+    }
 
     /*
      * Fed: we don't need to concern ourselves with meshs as we don't have water
@@ -39,7 +43,7 @@ public class HexMap : MonoBehaviour
 
     public Material MatBadPlanet;
 
-    public GameObject UnitResourceShipPrefab;
+    // public GameObject UnitResourceShipPrefab; // Changed to selectedUnit
 
     public int numRows = 40;
     public int numColumns = 40;
@@ -97,8 +101,8 @@ public class HexMap : MonoBehaviour
 
                 // Samuel: Get clickable tile component from hex prefab
                 ClickableTile ct = hexGO.GetComponent<ClickableTile>();
-                ct.tileQ = column;
-                ct.tileR = row;
+                ct.Q = column;
+                ct.R = row;
                 ct.map = this;
 
                 h.GameObject = hexGO;
@@ -119,56 +123,6 @@ public class HexMap : MonoBehaviour
         StaticBatchingUtility.Combine(this.gameObject);
     }
 
-    //public void UpdateHexVisuals()
-    //{
-    //    for (int column = 0; column < numColumns; column++)
-    //    {
-    //        for (int row = 0; row < numRows; row++)
-    //        {
-    //            HexTileBase h = hexes[column, row];
-    //            GameObject hexGO = hexToGameObjectMap[h];
-
-    //            MeshRenderer mr = hexGO.GetComponentInChildren<MeshRenderer>();
-    //            //ideally will convert the value for h.Elevation to a string soon but atm it's just connected to different values
-    //            //we have a switch instead of if statement because wee don't need a range in our values
-    //            switch (h.tiletype)
-    //            {
-    //                case HexTileBase.TILE_TYPE.STAR:
-    //                    mr.material = MatStar;
-    //                    break;
-
-    //                case HexTileBase.TILE_TYPE.PLANET:
-    //                    mr.material = MatPlanet;
-    //                    break;
-
-    //                case HexTileBase.TILE_TYPE.ASTEROID:
-    //                    mr.material = MatAsteroid;
-    //                    break;
-
-    //                case HexTileBase.TILE_TYPE.EVENT:
-    //                    mr.material = MatEvent;
-    //                    break;
-
-    //                case HexTileBase.TILE_TYPE.BLACKHOLE:
-    //                    mr.material = MatBlackHole;
-    //                    break;
-
-    //                case HexTileBase.TILE_TYPE.BADPLANET:
-    //                    mr.material = MatBadPlanet;
-    //                    break;
-
-    //                default:
-    //                    mr.material = MatSpace;
-    //                    break;
-    //            }
-
-    //            //Fed: we don't need to worry about the mesh atm we're just working with tiles that look the same
-    //            MeshFilter mf = hexGO.GetComponentInChildren<MeshFilter>();
-    //            mf.mesh = TileMesh;
-    //        }
-    //    }
-    //}
-
     public List<HexTileBase> GetHexesWithinRadiusOf(HexTileBase centerHex, int range)
     {
         List<HexTileBase> results = new List<HexTileBase>();
@@ -182,25 +136,35 @@ public class HexMap : MonoBehaviour
         }
         return results;
     }
-    public void SpawnUnitAt(GameObject prefab, int Q, int R)
+    public void SpawnUnitAt(GameObject unitPrefab, int q=0, int r=0)
     {
 
         // hexToGameObjectMap[GetHexAt(x, y)] = ;
-        HexTileBase h = GetHexAt(Q, R);
+        HexTileBase h = GetHexAt(q, r);
 
-        Instantiate(prefab, h.Position(), Quaternion.identity);
+        selectedUnit = Instantiate(unitPrefab, h.Position(), Quaternion.identity);
     }
-    public void MoveSelectedUnitTo(int Q, int R) {
-    /**
-     * Author: Samuel Overington
-     * Function to connect to component ClickableTile.cs
-     * NB Currently unit (player), is permanently selected
-     * (see GameObject selectedUnit in the head of this file)
-     **/
+    public void MoveSelectedUnitTo(int q, int r) {
+        /**
+        * Author: Samuel Overington
+        * Function to connect to component ClickableTile.cs
+        * NB Currently unit (player), is permanently selected
+        * (see GameObject selectedUnit in the head of this file)
+        **/
 
-     HexTileBase h = GetHexAt(Q,R);
-     selectedUnit.transform.position = h.Position();
-     Debug.Log(string.Format("Moving to {0}, {1}", Q, R));
+        HexTileBase h = GetHexAt(q,r);
+        // ClickableTile ct = hexGO.GetComponent<ClickableTile>();
+        // selectedUnit.transform.position = h.Position();
+		selectedUnit.GetComponent<Unit>().destination = h.Position();
+		// selectedUnit.GetComponent<Unit>().R = r;
+
+        // this.selectedUnit.destination = h.Position();
+
+        // Debug.Log(string.Format("destination postion: {}",type(h.Position().ToString()));
+		// selectedUnit.GetComponent<Unit>().destination = h.Position();
+
+        Debug.Log(string.Format("Moving selectedUnit to {0}, {1}", q, r));
+        // Debug.Log(selectedUnit);
 
     }
 

@@ -26,6 +26,7 @@ public class HexTileBase
 
     public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
 
+    // TODO? Does this override unity gameobject?
     public GameObject GameObject { get; set; }
 
 

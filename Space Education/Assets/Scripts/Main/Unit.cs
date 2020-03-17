@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour {
 	void Start () {
 		destination = transform.position;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		// Move towards our destination
