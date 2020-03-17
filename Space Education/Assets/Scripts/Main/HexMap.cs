@@ -156,12 +156,6 @@ public class HexMap : MonoBehaviour
         // ClickableTile ct = hexGO.GetComponent<ClickableTile>();
         // selectedUnit.transform.position = h.Position();
 		selectedUnit.GetComponent<Unit>().destination = h.Position();
-		// selectedUnit.GetComponent<Unit>().R = r;
-
-        // this.selectedUnit.destination = h.Position();
-
-        // Debug.Log(string.Format("destination postion: {}",type(h.Position().ToString()));
-		// selectedUnit.GetComponent<Unit>().destination = h.Position();
 
         Debug.Log(string.Format("Moving selectedUnit to {0}, {1}", q, r));
         // Debug.Log(selectedUnit);
