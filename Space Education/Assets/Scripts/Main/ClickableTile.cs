@@ -5,11 +5,10 @@ using UnityEngine;
 public class ClickableTile : MonoBehaviour
 {
     public HexMap map;
-    public int tileQ;
-    public int tileR;
+    public int Q;
+    public int R;
 
     void OnMouseUp() {
-        Debug.Log("Clicko World!");
-        map.MoveSelectedUnitTo(tileQ, tileR);
+        map.MoveSelectedUnitTo(Q, R);
     }
 }
