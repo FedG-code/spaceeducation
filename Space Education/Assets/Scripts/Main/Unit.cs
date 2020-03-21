@@ -23,13 +23,26 @@ public class Unit : MonoBehaviour {
 		// and throughout the video I explain how you can apply that pathfinding
 		// to hexes.
 
+
 		Vector3 dir = destination - transform.position;
 		Vector3 velocity = dir.normalized * speed * Time.deltaTime;
 
 		// Make sure the velocity doesn't actually exceed the distance we want.
 		velocity = Vector3.ClampMagnitude( velocity, dir.magnitude );
 
+		// Define a target position above and behind the target transform
+	    // Vector3 targetPosition = new Target.TransformPoint(dir);
+
 		transform.Translate(velocity);
+		// transform.Rotate(0, 1, 0);
+
+		// Dampen towards the target rotation
+		// transform.position = Vector3.SmoothDamp(
+		// 	transform.position,
+		// 	targetPosition,
+		// 	ref velocity,
+		// 	(speed/velocity));
+
 
 	}
 

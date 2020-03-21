@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+// using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
@@ -18,8 +18,8 @@ public class HexMap : MonoBehaviour
     void Start()
     {
         GenerateMap();
-        SpawnUnitAt(this.selectedUnit, 0,0);
-        MoveSelectedUnitTo(9,26);
+        SpawnUnitAt(this.selectedUnit, 9,26);
+        // MoveSelectedUnitTo(9,26);
     }
 
     /*
@@ -51,11 +51,13 @@ public class HexMap : MonoBehaviour
     public bool allowWrapEastWest = true;
     public bool allowWrapNorthSouth = false;
 
-    public HexTileBase[,] hexes { get; set; }
+    public HexTileBase[,] hexes;
+    // Samuel: graph of hex tiles, representing each tile connections
+    Node[,] graph;
 
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
 
-    public HexTileBase GetHexAt(int x, int y)
+    public Node GetNodeAt(int q, int r)
     {
         if (hexes == null)
         {
@@ -64,26 +66,74 @@ public class HexMap : MonoBehaviour
         }
 
         if (allowWrapEastWest)
-            x = x % numRows;
+            q = q % numRows;
         if (allowWrapNorthSouth)
-            y = y % numColumns;
+            r = r % numColumns;
+
+        return graph[x, y];
+    }
+    public HexTileBase GetHexAt(int q, int r)
+    {
+        if (hexes == null)
+        {
+            Debug.LogError("Hexes array not yet instantied.");
+            return null;
+        }
+
+        if (allowWrapEastWest)
+            q = q % numRows;
+        if (allowWrapNorthSouth)
+            r = r % numColumns;
 
         return hexes[x, y];
     }
 
+    private void AddNodeEdges(int q, int r, ref Node node) {
+        // Samuel: Generate Pathfinding Graph
+        // nodes added clockwise from top left edge of hex tile
+        // node = graph[column, row]
+        // Using GetHexAt, and passing graph- so that we can be consistant
+        // with wrapping
+
+        // looping N S
+        // if (q > 0)
+        node.edges.Add(GetNodeAt(q+0,r+1)); // NorthEast
+        node.edges.Add(GetNodeAt(q+1,r+0)); // Ease
+        node.edges.Add(GetNodeAt(q+1,r-1)); // SE
+        node.edges.Add(GetNodeAt(q+0,r-1)); // SW
+        node.edges.Add(GetNodeAt(q-1,r+0)); // W
+        node.edges.Add(GetNodeAt(q-1,r+1)); // NW
+
+        // node.edges.Add(graph[q+0,r+1]); // NorthEast
+        // node.edges.Add(graph[q+1,r+0]); // Ease
+        // node.edges.Add(graph[q+1,r-1]); // SE
+        // node.edges.Add(graph[q+0,r-1]); // SW
+        // node.edges.Add(graph[q-1,r+0]); // W
+        // node.edges.Add(graph[q-1,r+1]); // NW
+    }
+    
     virtual public void GenerateMap()
     {
         hexes = new HexTileBase[numColumns, numRows];
         hexToGameObjectMap = new Dictionary<HexTileBase, GameObject>();
-        //Generate totally random map
+
+        // Samuel: populate empy array of nodes the size of our map
+        graph = new Node[numColumns, numRows];
+
+        //Generate tile objects for map
         for (int column = 0; column < numColumns; column++)
         {
             for (int row = 0; row < numRows; row++)
             {
-                //Fed: omitted from tutorial 2 video, comments pointed me to this. This definiton of pos is what makes the square map
+                // Fed: omitted from tutorial 2 video, comments pointed me to
+                // this. This definiton of pos is what makes the square map
                 SpaceTile h = new SpaceTile(this, column, row);
                 //h.tiletype = -1;
                 hexes[column, row] = h;
+
+                // Samuel: inplace editing of node in graph (ref is two way,
+                // meaning  that it will not remove pre-existing node edges)
+                AddNodeEdges(column, row, ref graph[column,row] );
 
                 Vector3 pos = h.PositionFromCamera(
                     Camera.main.transform.position,
@@ -104,6 +154,8 @@ public class HexMap : MonoBehaviour
                 ct.Q = column;
                 ct.R = row;
                 ct.map = this;
+
+
 
                 h.GameObject = hexGO;
                 MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
@@ -136,6 +188,28 @@ public class HexMap : MonoBehaviour
         }
         return results;
     }
+
+    public class Node
+    {
+        /**
+        * Author: Samuel Overington
+        * Class for storing graph data (nodes and edges), and all the different
+        * connections between each neighbouring tile.
+        *
+        * Each tile: a node
+        * Each neighbouring (connected) tile: an edge.
+        **/
+
+        public List<Node> edges;
+        public int Q;
+        public int R;
+
+        public Node() {
+            // Default Constructor
+            edges = new List<Node>();
+        }
+    }
+
     public void SpawnUnitAt(GameObject unitPrefab, int q=0, int r=0)
     {
 
