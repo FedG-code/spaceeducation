@@ -17,6 +17,7 @@ public class HexMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GenerateNodes();
         GenerateMap();
         SpawnUnitAt(this.selectedUnit, 9,26);
         // MoveSelectedUnitTo(9,26);
@@ -51,12 +52,33 @@ public class HexMap : MonoBehaviour
     public bool allowWrapEastWest = true;
     public bool allowWrapNorthSouth = false;
 
-    public HexTileBase[,] hexes;
+    public HexTileBase[,] hexes {get; set;}
     // Samuel: graph of hex tiles, representing each tile connections
-    Node[,] graph;
+    public Node[,] graph;
 
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
 
+    public void GenerateNodes() {
+        // Samuel: populate empy array of nodes the size of our map
+        graph = new Node[numColumns, numRows];
+        for (int column = 0; column < numColumns; column++)
+        {
+            for (int row = 0; row < numRows; row++)
+            {
+                // Node n = new Node(column,row);
+                // Debug.Log(string.Format("adding node at: {0},{1} ",n.Q, n.R));
+                graph[column, row] = new Node(column, row);
+                // graph[column, row].Q = column;
+                // graph[column, row].R = row;
+                // graph[column, row] = n;
+            }
+        }
+        // Debug.Log(string.Format("The Rank of the graph: {0}", graph.Rank));
+        // Debug.Log(string.Format("The length of the graph: {0}", graph.GetLength(0)));
+        // Node n = graph[4,24];
+        // Debug.Log(string.Format("a random node: {0},{1}", n.Q, n.R));
+
+    }
     public Node GetNodeAt(int q, int r)
     {
         if (hexes == null)
@@ -69,8 +91,11 @@ public class HexMap : MonoBehaviour
             q = q % numRows;
         if (allowWrapNorthSouth)
             r = r % numColumns;
+        // Debug.Log(string.Format("getting node from {0}, {1}",q,r));
 
-        return graph[x, y];
+        Node n = graph[q, r];
+        // Debug.Log(string.Format("node at {0}, {1}",n.Q,n.R));
+        return n;
     }
     public HexTileBase GetHexAt(int q, int r)
     {
@@ -85,40 +110,53 @@ public class HexMap : MonoBehaviour
         if (allowWrapNorthSouth)
             r = r % numColumns;
 
-        return hexes[x, y];
+        return hexes[q, r];
     }
+    //
 
-    private void AddNodeEdges(int q, int r, ref Node node) {
+    public void AddNodeEdges(int q, int r) {
         // Samuel: Generate Pathfinding Graph
         // nodes added clockwise from top left edge of hex tile
         // node = graph[column, row]
         // Using GetHexAt, and passing graph- so that we can be consistant
         // with wrapping
+        // Node[,] graph
 
-        // looping N S
-        // if (q > 0)
-        node.edges.Add(GetNodeAt(q+0,r+1)); // NorthEast
-        node.edges.Add(GetNodeAt(q+1,r+0)); // Ease
-        node.edges.Add(GetNodeAt(q+1,r-1)); // SE
-        node.edges.Add(GetNodeAt(q+0,r-1)); // SW
-        node.edges.Add(GetNodeAt(q-1,r+0)); // W
-        node.edges.Add(GetNodeAt(q-1,r+1)); // NW
 
-        // node.edges.Add(graph[q+0,r+1]); // NorthEast
-        // node.edges.Add(graph[q+1,r+0]); // Ease
-        // node.edges.Add(graph[q+1,r-1]); // SE
-        // node.edges.Add(graph[q+0,r-1]); // SW
-        // node.edges.Add(graph[q-1,r+0]); // W
-        // node.edges.Add(graph[q-1,r+1]); // NW
+        // GetNodeAt(q+0,r+1)
+
+        // Node n = GetNodeAt(q+0,r+1);
+        // Debug.Log(string.Format("getting node at {0}, {1}",n.Q,n.R));
+        // Debug.Log({n.Q, n.R});
+
+        if (allowWrapEastWest)
+            q = q % numRows;
+        if (allowWrapNorthSouth)
+            r = r % numColumns;
+
+        if (r < numRows-1) // Cant do the last tile at the end of row
+            graph[q, r].edges.Add(GetNodeAt(q+0,r+1)); // NorthEast
+        if (q < numColumns-1){
+            graph[q, r].edges.Add(GetNodeAt(q+1,r+0)); // East
+            if (r > 0) {
+                graph[q, r].edges.Add(GetNodeAt(q+1,r-1)); // SE
+            }
+        }
+
+        if (r > 0)
+            graph[q, r].edges.Add(GetNodeAt(q+0,r-1)); // SW
+
+        if (q > 0){
+            graph[q, r].edges.Add(GetNodeAt(q-1,r+0)); // W
+            if (r < numRows-1)
+                graph[q, r].edges.Add(GetNodeAt(q-1,r+1)); // NW
+        }
     }
-    
+
     virtual public void GenerateMap()
     {
         hexes = new HexTileBase[numColumns, numRows];
         hexToGameObjectMap = new Dictionary<HexTileBase, GameObject>();
-
-        // Samuel: populate empy array of nodes the size of our map
-        graph = new Node[numColumns, numRows];
 
         //Generate tile objects for map
         for (int column = 0; column < numColumns; column++)
@@ -128,12 +166,14 @@ public class HexMap : MonoBehaviour
                 // Fed: omitted from tutorial 2 video, comments pointed me to
                 // this. This definiton of pos is what makes the square map
                 SpaceTile h = new SpaceTile(this, column, row);
+                // Debug.Log(string.Format("Creating Hex Tile at {0},{1}",h.Q, h.R));
                 //h.tiletype = -1;
                 hexes[column, row] = h;
 
                 // Samuel: inplace editing of node in graph (ref is two way,
                 // meaning  that it will not remove pre-existing node edges)
-                AddNodeEdges(column, row, ref graph[column,row] );
+                // graph[column, row]
+                AddNodeEdges(column, row);
 
                 Vector3 pos = h.PositionFromCamera(
                     Camera.main.transform.position,
@@ -204,9 +244,11 @@ public class HexMap : MonoBehaviour
         public int Q;
         public int R;
 
-        public Node() {
+        public Node(int q,int r) {
             // Default Constructor
             edges = new List<Node>();
+            Q = q;
+            R = r;
         }
     }
 
@@ -226,13 +268,22 @@ public class HexMap : MonoBehaviour
         * (see GameObject selectedUnit in the head of this file)
         **/
 
-        HexTileBase h = GetHexAt(q,r);
-        // ClickableTile ct = hexGO.GetComponent<ClickableTile>();
-        // selectedUnit.transform.position = h.Position();
-		selectedUnit.GetComponent<Unit>().destination = h.Position();
+		// selectedUnit.GetComponent<Unit>().tileQ = x;
+		// selectedUnit.GetComponent<Unit>().tileR = y;
 
-        Debug.Log(string.Format("Moving selectedUnit to {0}, {1}", q, r));
+        HexTileBase h = GetHexAt(q,r);
+
+        // movement here
+		// selectedUnit.GetComponent<Unit>().destination = h.Position();
+
+        // Debug.Log(string.Format("Moving selectedUnit from {0} {1} to {2}, {1}", h.Q, h.R, q, r));
         // Debug.Log(selectedUnit);
+
+        Dictionary<Node, float> dist = new Dictionary<Node, float>();
+        Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
+        List<Node> unvisited = new List<Node>();
+
+        Node source = graph[h.Q, h.R];
 
     }
 
