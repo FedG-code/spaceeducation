@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 // using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,10 +18,28 @@ public class HexMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateNodes();
+        // selectedUnit.GetComponent<Unit>().X = selectedUnit.transform.position.x;
+        // selectedUnit.GetComponent<Unit>().Y = selectedUnit.transform.position.y;
+
+        selectedUnit.GetComponent<Unit>().map = this;
+
         GenerateMap();
+
+        GenerateNodes();
+
         SpawnUnitAt(this.selectedUnit, 9,26);
-        // MoveSelectedUnitTo(9,26);
+        // GeneratePathTo(9,26);
+
+			// int qs = 9;
+			// int rs = 26;
+			// int qf = 11;
+			// int rf = 26;
+			// Debug.LogFormat("Creating a debug line from V1: {0},{1}, V1: {2},{3}", qs, rs, qf,rf );
+			// Vector3 stvec = HexCoordToWorldCoord(qs,rs)+new Vector3(0,1f,0);
+			// Vector3 fivec = HexCoordToWorldCoord(qf,rf)+new Vector3(0,1f,0);
+            // Debug.LogFormat("Line vectors: {0} -> {1}",stvec.ToString(), fivec.ToString());
+			// Debug.DrawLine(stvec, fivec, Color.red, 100f, false);
+
     }
 
     /*
@@ -55,6 +74,7 @@ public class HexMap : MonoBehaviour
     public HexTileBase[,] hexes {get; set;}
     // Samuel: graph of hex tiles, representing each tile connections
     public Node[,] graph;
+    // List<Node> currentPath = null;
 
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
 
@@ -70,20 +90,28 @@ public class HexMap : MonoBehaviour
                 graph[column, row] = new Node(column, row);
                 // graph[column, row].Q = column;
                 // graph[column, row].R = row;
-                // graph[column, row] = n;
+                graph[column, row].map = this;
             }
         }
-        // Debug.Log(string.Format("The Rank of the graph: {0}", graph.Rank));
-        // Debug.Log(string.Format("The length of the graph: {0}", graph.GetLength(0)));
-        // Node n = graph[4,24];
-        // Debug.Log(string.Format("a random node: {0},{1}", n.Q, n.R));
+
+        //Generate tile objects for map
+        for (int column = 0; column < numColumns; column++)
+        {
+            for (int row = 0; row < numRows; row++)
+            {
+                // Samuel: inplace editing of node in graph (ref is two way,
+                // meaning  that it will not remove pre-existing node edges)
+                // graph[column, row]
+                AddNodeEdges(column, row);
+            }
+        }
 
     }
     public Node GetNodeAt(int q, int r)
     {
-        if (hexes == null)
+        if (graph == null)
         {
-            Debug.LogError("Hexes array not yet instantied.");
+            Debug.LogError("Graph array not yet instantied.");
             return null;
         }
 
@@ -118,16 +146,10 @@ public class HexMap : MonoBehaviour
         // Samuel: Generate Pathfinding Graph
         // nodes added clockwise from top left edge of hex tile
         // node = graph[column, row]
-        // Using GetHexAt, and passing graph- so that we can be consistant
-        // with wrapping
+        // Using GetHexAt,
         // Node[,] graph
 
 
-        // GetNodeAt(q+0,r+1)
-
-        // Node n = GetNodeAt(q+0,r+1);
-        // Debug.Log(string.Format("getting node at {0}, {1}",n.Q,n.R));
-        // Debug.Log({n.Q, n.R});
 
         if (allowWrapEastWest)
             q = q % numRows;
@@ -170,10 +192,6 @@ public class HexMap : MonoBehaviour
                 //h.tiletype = -1;
                 hexes[column, row] = h;
 
-                // Samuel: inplace editing of node in graph (ref is two way,
-                // meaning  that it will not remove pre-existing node edges)
-                // graph[column, row]
-                AddNodeEdges(column, row);
 
                 Vector3 pos = h.PositionFromCamera(
                     Camera.main.transform.position,
@@ -229,29 +247,12 @@ public class HexMap : MonoBehaviour
         return results;
     }
 
-    public class Node
-    {
-        /**
-        * Author: Samuel Overington
-        * Class for storing graph data (nodes and edges), and all the different
-        * connections between each neighbouring tile.
-        *
-        * Each tile: a node
-        * Each neighbouring (connected) tile: an edge.
-        **/
 
-        public List<Node> edges;
-        public int Q;
-        public int R;
+    public Vector3 HexCoordToWorldCoord(int Q, int R){
 
-        public Node(int q,int r) {
-            // Default Constructor
-            edges = new List<Node>();
-            Q = q;
-            R = r;
-        }
+        HexTileBase h = GetHexAt(Q,R);
+        return h.Position();
     }
-
     public void SpawnUnitAt(GameObject unitPrefab, int q=0, int r=0)
     {
 
@@ -259,8 +260,12 @@ public class HexMap : MonoBehaviour
         HexTileBase h = GetHexAt(q, r);
 
         selectedUnit = Instantiate(unitPrefab, h.Position(), Quaternion.identity);
+        selectedUnit.GetComponent<Unit>().Q  = q;
+        selectedUnit.GetComponent<Unit>().R  = r;
+        // selectedUnit.Q = q;
+        // selectedUnit.R = r;
     }
-    public void MoveSelectedUnitTo(int q, int r) {
+    public void GeneratePathTo(int q, int r) {
         /**
         * Author: Samuel Overington
         * Function to connect to component ClickableTile.cs
@@ -268,22 +273,104 @@ public class HexMap : MonoBehaviour
         * (see GameObject selectedUnit in the head of this file)
         **/
 
-		// selectedUnit.GetComponent<Unit>().tileQ = x;
-		// selectedUnit.GetComponent<Unit>().tileR = y;
 
-        HexTileBase h = GetHexAt(q,r);
 
         // movement here
 		// selectedUnit.GetComponent<Unit>().destination = h.Position();
 
-        // Debug.Log(string.Format("Moving selectedUnit from {0} {1} to {2}, {1}", h.Q, h.R, q, r));
-        // Debug.Log(selectedUnit);
-
+        // Initialise current path to be empty at the beginning.
+        selectedUnit.GetComponent<Unit>().currentPath = null;
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
+
+        // List of nodes that we haven't checked out yet
         List<Node> unvisited = new List<Node>();
 
-        Node source = graph[h.Q, h.R];
+
+
+        Node source = graph[
+    		selectedUnit.GetComponent<Unit>().Q,
+    		selectedUnit.GetComponent<Unit>().R
+        ];
+
+        Debug.LogFormat("source: {0},{1}",
+    		selectedUnit.GetComponent<Unit>().Q,
+    		selectedUnit.GetComponent<Unit>().R
+      );
+
+        Node target = graph[
+            q,
+            r
+        ];
+        Debug.LogFormat("target: {0},{1}", q,r );
+
+        // set initial values for pathfinding
+        dist[source] = 0;
+        prev[source] = null;
+
+        foreach (Node n in graph){
+            if (n != source){
+                /**
+                initialise nodes to have infinity distance, since we don't
+                know any better at this point. Also its possible that some
+                nodes can't be reached, which would make infinity a
+                reasonable value
+                **/
+                dist[n] = Mathf.Infinity;
+                prev[n] = null; // We don't know the previous here
+            }
+            unvisited.Add(n);
+        }
+        while (unvisited.Count > 0) {
+            // All of the nodes inside of unvisited, we are going to order based on distance. This is a short fast method, and could be optimised at a later date. A possible solution: consider having a prioraty queue or some other self sorting, optimized data structure.
+            // Node u = unvisited.OrderBy(n => dist[n]).First();
+            Node u = null;
+            foreach (Node possibleU in unvisited) {
+                if (u == null || dist[possibleU] < dist[u])
+                    u = possibleU;
+
+            }
+
+
+            // Break out of while loop, as we have found our shortest distance to target.
+            if (u == target) {
+                break;
+            }
+
+            unvisited.Remove(u);
+
+            foreach (Node n in u.edges) {
+                float alt = dist[u] + u.DistanceTo(n);
+                // Debug.LogFormat("Calc distance: {0}", alt);
+                if (alt < dist[n]) {
+                    dist[n] = alt;
+                    prev[n] = u;
+                }
+            }
+        }
+        // Options: we have found shortest rout, or there is no route to target
+
+        // Check if there is no route
+        if (prev[target] == null) {
+            // no possible route from target to source
+            return;
+        }
+        List<Node> currentPath = new List<Node>();
+        Node curr = target;
+
+        // Stepping through the "prev" chain, adding each node to our pathfinding
+        while (curr != null) {
+            // while there is still a previous Node to step backwards through
+            currentPath.Add(curr);
+            curr = prev[curr];
+
+        }
+        // right now, currentPath describes a step by step
+        // node path from our target to our source, so we
+        // need to invert it.
+        currentPath.Reverse();
+
+        selectedUnit.GetComponent<Unit>().currentPath = currentPath;
 
     }
 

@@ -9,6 +9,7 @@ public class ClickableTile : MonoBehaviour
     public int R;
 
     void OnMouseUp() {
-        map.MoveSelectedUnitTo(Q, R);
+        Debug.LogFormat("Generatoring a path to {0},{1}",Q,R);
+        map.GeneratePathTo(Q, R);
     }
 }

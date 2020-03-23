@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Unit : MonoBehaviour {
 
 	public Vector3 destination;
+	public int Q;
+	public int R;
+	public HexMap map;
+	public List<Node> currentPath = null;
 
 	float speed = 6;
 
@@ -13,7 +17,29 @@ public class Unit : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update() {
+		if(currentPath != null) {
+			int currNode = 0;
+
+
+			while( currNode < currentPath.Count-1 ) {
+
+				Vector3 start = map.HexCoordToWorldCoord( currentPath[currNode].Q, currentPath[currNode].R ) +
+					new Vector3(0, 0.5f,0) ;
+
+				Vector3 end   = map.HexCoordToWorldCoord( currentPath[currNode+1].Q, currentPath[currNode+1].R )  +
+					new Vector3(0, 0.5f,0) ;
+
+				Debug.DrawLine(start, end, Color.red, 100f, false );
+
+				currNode++;
+			}
+			Debug.LogFormat("The size of currPath is: {0} and first element is {1}", currentPath.Count, currentPath[0]);
+
+		}
+
+	}
+	void pdate () {
 		// Move towards our destination
 
 		// NOTE!  This just moves directly there, but really you'd want to feed
@@ -35,14 +61,6 @@ public class Unit : MonoBehaviour {
 
 		transform.Translate(velocity);
 		// transform.Rotate(0, 1, 0);
-
-		// Dampen towards the target rotation
-		// transform.position = Vector3.SmoothDamp(
-		// 	transform.position,
-		// 	targetPosition,
-		// 	ref velocity,
-		// 	(speed/velocity));
-
 
 	}
 
