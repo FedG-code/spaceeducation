@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EventTile : HexTileBase, IHexTile
+public class HexTileEvent : HexTileBase, IHexTile
 {
-    public EventTile(HexMap hexMap, int q, int r, GameObject gameObject)
+    public HexTileEvent(HexMap hexMap, int q, int r, GameObject gameObject)
         : base(hexMap, q, r)
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();

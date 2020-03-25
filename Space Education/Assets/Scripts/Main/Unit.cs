@@ -9,10 +9,13 @@ public class Unit : MonoBehaviour {
 	public HexMap map;
 	public List<Node> currentPath = null;
 
+	// private List<Vector3> currentPathV3 = null;
+
 	float speed = 6;
 
 	// Use this for initialization
 	void Start () {
+		// LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
 		destination = transform.position;
 	}
 
@@ -30,11 +33,11 @@ public class Unit : MonoBehaviour {
 				Vector3 end   = map.HexCoordToWorldCoord( currentPath[currNode+1].Q, currentPath[currNode+1].R )  +
 					new Vector3(0, 0.5f,0) ;
 
-				Debug.DrawLine(start, end, Color.red, 100f, false );
+
+				Debug.DrawLine(start, end, Color.red);
 
 				currNode++;
 			}
-			Debug.LogFormat("The size of currPath is: {0} and first element is {1}", currentPath.Count, currentPath[0]);
 
 		}
 

@@ -14,7 +14,7 @@ public class HexTileBase
         this.R = r;        // Row
         this.S = -(q + r); // Something
 
-
+        this.movementCost = 1f; // default
 
     }
 
@@ -23,6 +23,7 @@ public class HexTileBase
     public readonly int Q;  // Column
     public readonly int R; // Row
     public readonly int S;
+    public float movementCost;
 
     public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
 

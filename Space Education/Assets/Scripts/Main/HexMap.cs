@@ -18,27 +18,12 @@ public class HexMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // selectedUnit.GetComponent<Unit>().X = selectedUnit.transform.position.x;
-        // selectedUnit.GetComponent<Unit>().Y = selectedUnit.transform.position.y;
-
-        selectedUnit.GetComponent<Unit>().map = this;
 
         GenerateMap();
 
-        GenerateNodes();
-
         SpawnUnitAt(this.selectedUnit, 9,26);
-        // GeneratePathTo(9,26);
 
-			// int qs = 9;
-			// int rs = 26;
-			// int qf = 11;
-			// int rf = 26;
-			// Debug.LogFormat("Creating a debug line from V1: {0},{1}, V1: {2},{3}", qs, rs, qf,rf );
-			// Vector3 stvec = HexCoordToWorldCoord(qs,rs)+new Vector3(0,1f,0);
-			// Vector3 fivec = HexCoordToWorldCoord(qf,rf)+new Vector3(0,1f,0);
-            // Debug.LogFormat("Line vectors: {0} -> {1}",stvec.ToString(), fivec.ToString());
-			// Debug.DrawLine(stvec, fivec, Color.red, 100f, false);
+        GenerateNodes();
 
     }
 
@@ -187,7 +172,7 @@ public class HexMap : MonoBehaviour
             {
                 // Fed: omitted from tutorial 2 video, comments pointed me to
                 // this. This definiton of pos is what makes the square map
-                SpaceTile h = new SpaceTile(this, column, row);
+                HexTileSpace h = new HexTileSpace(this, column, row);
                 // Debug.Log(string.Format("Creating Hex Tile at {0},{1}",h.Q, h.R));
                 //h.tiletype = -1;
                 hexes[column, row] = h;
@@ -259,12 +244,18 @@ public class HexMap : MonoBehaviour
         // hexToGameObjectMap[GetHexAt(x, y)] = ;
         HexTileBase h = GetHexAt(q, r);
 
+        selectedUnit.GetComponent<Unit>().map = this;
         selectedUnit = Instantiate(unitPrefab, h.Position(), Quaternion.identity);
         selectedUnit.GetComponent<Unit>().Q  = q;
         selectedUnit.GetComponent<Unit>().R  = r;
         // selectedUnit.Q = q;
         // selectedUnit.R = r;
     }
+    float CostToEnterHex(int q, int r) {
+        HexTileBase h = GetHexAt(q,r);
+        return h.movementCost;
+
+        }
     public void GeneratePathTo(int q, int r) {
         /**
         * Author: Samuel Overington

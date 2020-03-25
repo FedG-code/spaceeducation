@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class SpaceTile: HexTileBase, IHexTile
+public class HexTileSpace: HexTileBase, IHexTile
     {
-    public SpaceTile(HexMap hexMap, int q, int r)
+    public HexTileSpace(HexMap hexMap, int q, int r)
         : base(hexMap, q, r)
     {
 

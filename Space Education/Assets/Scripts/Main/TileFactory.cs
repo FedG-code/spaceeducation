@@ -14,30 +14,29 @@ public class TileFactory
         {
             case HexTileBase.TILE_TYPE.ASTEROID:
                 {
-                    return new AsteroidTile(map, q, r, gameObject);
+                    return new HexTileAsteroid(map, q, r, gameObject);
                 }
             case HexTileBase.TILE_TYPE.BLACKHOLE:
                 {
-                    return new BlackholeTile(map, q, r, gameObject);
+                    return new HexTileBlackhole(map, q, r, gameObject);
                 }
             case HexTileBase.TILE_TYPE.STAR:
                 {
-                    return new StarTile(map, q, r, gameObject);
+                    return new HexTileStar(map, q, r, gameObject);
                 }
             case HexTileBase.TILE_TYPE.PLANET:
                 {
-                    return new PlanetTile(map, q, r, gameObject);
+                    return new HexTilePlanet(map, q, r, gameObject);
                 }
             case HexTileBase.TILE_TYPE.EVENT:
                 {
-                    return new EventTile(map, q, r, gameObject);
+                    return new HexTileEvent(map, q, r, gameObject);
                 }
             default:
                 {
-                    return new SpaceTile(map, q, r);
+                    return new HexTileSpace(map, q, r);
                 }
         }
 
     }
 }
-

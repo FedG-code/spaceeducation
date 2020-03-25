@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlanetTile : HexTileBase, IHexTile
+public class HexTilePlanet : HexTileBase, IHexTile
 {
-    public PlanetTile(HexMap hexMap, int q, int r, GameObject gameObject)
+    public HexTilePlanet(HexMap hexMap, int q, int r, GameObject gameObject)
         : base(hexMap, q, r)
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
@@ -16,7 +16,7 @@ public class PlanetTile : HexTileBase, IHexTile
     }
 
     public bool Populated { get; set; }
-    
+
     //public void DoAction(playerObject)
     public void DoAction()
     {
@@ -29,7 +29,7 @@ public class PlanetTile : HexTileBase, IHexTile
             //if playerObject.MiningTools.contains("Big Drill")
             //    {
             //    playerObject.Minerals.add("100 tonnes of iron");
-           
+
             //}
             //Give some metal resource with the amount dependent on the part of the tech tree they are on. Further=more rescources
             //possibly could include questions on the planets but need to figure out what to ask...
@@ -42,7 +42,7 @@ public class PlanetTile : HexTileBase, IHexTile
 
 
     }
-       
+
 
 
     public bool PlayerCanMoveHere()
@@ -50,5 +50,3 @@ public class PlanetTile : HexTileBase, IHexTile
         return true;
     }
 }
-
-

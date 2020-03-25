@@ -5,24 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class BlackholeTile : HexTileBase, IHexTile
-{
-    public BlackholeTile(HexMap hexMap, int q, int r, GameObject gameObject)
-     : base(hexMap, q, r)
+public class HexTileAsteroid: HexTileBase, IHexTile
+    {
+    public HexTileAsteroid(HexMap hexMap, int q, int r, GameObject gameObject)
+        : base(hexMap, q, r)
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
-        mr.material = hexMap.MatBlackHole;
+        mr.material = hexMap.MatAsteroid;
     }
 
     public void DoAction()
-    { //Pop-up that you cant move there as it's a black hole...
+    {
+        throw new NotImplementedException();
     }
+
     public bool PlayerCanMoveHere()
     {
-        return false;
+        throw new NotImplementedException();
     }
-
-
 }
-
-

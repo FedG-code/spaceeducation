@@ -5,22 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class AsteroidTile: HexTileBase, IHexTile
-    {
-    public AsteroidTile(HexMap hexMap, int q, int r, GameObject gameObject)
+public class HexTileStar : HexTileBase, IHexTile
+{
+    public HexTileStar(HexMap hexMap, int q, int r, GameObject gameObject)
         : base(hexMap, q, r)
     {
+
+
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
-        mr.material = hexMap.MatAsteroid;
+        mr.material = hexMap.MatStar;
     }
+
 
     public void DoAction()
     {
-        throw new NotImplementedException();
+
+        // Nothing to do here. Can't land on a star...
+        // Maybe have a pop-up to say you can't land on the star?...
     }
 
     public bool PlayerCanMoveHere()
     {
-        throw new NotImplementedException();
+        return false;
     }
+
 }

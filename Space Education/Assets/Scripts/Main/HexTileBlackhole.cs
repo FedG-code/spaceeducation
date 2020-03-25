@@ -5,28 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class StarTile : HexTileBase, IHexTile
+public class HexTileBlackhole : HexTileBase, IHexTile
 {
-    public StarTile(HexMap hexMap, int q, int r, GameObject gameObject)
-        : base(hexMap, q, r)
+    public HexTileBlackhole(HexMap hexMap, int q, int r, GameObject gameObject)
+     : base(hexMap, q, r)
     {
-
-
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
-        mr.material = hexMap.MatStar;
+        mr.material = hexMap.MatBlackHole;
     }
-
 
     public void DoAction()
-    {
-        
-        // Nothing to do here. Can't land on a star...
-        // Maybe have a pop-up to say you can't land on the star?...
+    { //Pop-up that you cant move there as it's a black hole...
     }
-
     public bool PlayerCanMoveHere()
     {
         return false;
     }
+
 
 }
