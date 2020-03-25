@@ -10,10 +10,9 @@ public class HexTileStar : HexTileBase, IHexTile
     public HexTileStar(HexMap hexMap, int q, int r, GameObject gameObject)
         : base(hexMap, q, r)
     {
-
-
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMap.MatStar;
+        this.movementCost = 1f; // default
     }
 
 

@@ -12,6 +12,7 @@ public class HexTileAsteroid: HexTileBase, IHexTile
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMap.MatAsteroid;
+        this.movementCost = 10f; // default
     }
 
     public void DoAction()

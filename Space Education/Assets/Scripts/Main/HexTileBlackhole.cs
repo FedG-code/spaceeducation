@@ -11,6 +11,7 @@ public class HexTileBlackhole : HexTileBase, IHexTile
      : base(hexMap, q, r)
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
+        this.movementCost = 99999999999999999999999999f;
         mr.material = hexMap.MatBlackHole;
     }
 

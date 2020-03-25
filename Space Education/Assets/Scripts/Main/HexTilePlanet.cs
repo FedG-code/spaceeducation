@@ -13,6 +13,7 @@ public class HexTilePlanet : HexTileBase, IHexTile
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMap.MatPlanet;
 
+        this.movementCost = 10f; // default
     }
 
     public bool Populated { get; set; }
