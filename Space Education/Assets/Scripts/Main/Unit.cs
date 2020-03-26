@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Unit : MonoBehaviour {
@@ -7,43 +8,67 @@ public class Unit : MonoBehaviour {
 	public int Q;
 	public int R;
 	public HexMap map;
+	public Vector3 currentPathOffset = new Vector3(0, 0.5f, 0);
 	public List<Node> currentPath = null;
 
-	private List<Vector3> currentPathV3 = null;
+	List<Vector3> currentPathV3List;
+	private float jump = 2f;
+
+	public Color c1 = Color.yellow;
+	public Color c2 = Color.red;
 
 	float speed = 6;
 
 	// Use this for initialization
 	void Start () {
-		// LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+		currentPathV3List = new List<Vector3>();
+
+		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+
 		destination = transform.position;
+		currentPathV3List = null;
+
+		lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 0;
+
+		// A simple 2 color gradient with a fixed alpha of 1.0f.
+		float alpha = 1.0f;
+		Gradient gradient = new Gradient();
+		gradient.SetKeys(
+			new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
+			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
+		);
+		lineRenderer.colorGradient = gradient;
 	}
 
 	// Update is called once per frame
 	void Update() {
 		if(currentPath != null) {
-			this.GenerateCurrentPathVector();
+			GenerateCurrentPathVectorList();
 		}
 
 	}
 
-	private void GenerateCurrentPathVector() {
-			int currNode = 0;
+	private void RenderPath(){
+			LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
+			lineRenderer.positionCount = currentPathV3List.Count;
+			lineRenderer.SetPositions(currentPathV3List.ToArray());
 
-			while( currNode < currentPath.Count-1 ) {
+			currentPath = null;
 
-				Vector3 start = map.HexCoordToWorldCoord( currentPath[currNode].Q, currentPath[currNode].R ) +
-					new Vector3(0, 0.5f,0) ;
+	}
+	private void GenerateCurrentPathVectorList() {
+			foreach(Node n in currentPath ) {
 
-				Vector3 end   = map.HexCoordToWorldCoord( currentPath[currNode+1].Q, currentPath[currNode+1].R )  +
-					new Vector3(0, 0.5f,0) ;
-
-
-				Debug.DrawLine(start, end, Color.red);
-
-				currNode++;
+				Vector3 pos = map.HexCoordToWorldCoord( n.Q, n.R );
+				Debug.LogFormat("pos: {0}",pos.ToString());
+				currentPathV3List.Add( pos );
+				Debug.LogFormat("currentPathV3List size: {0}",currentPathV3List.Count);
 			}
+			currentPath = null;
+			RenderPath();
 
 	}
 	public void updateDestination (Vector3 v) {
@@ -57,7 +82,7 @@ public class Unit : MonoBehaviour {
 		// to hexes.
 
 
-		destination = v;
+		destination += v;
 		Vector3 dir = destination - transform.position;
 		Vector3 velocity = dir.normalized * speed * Time.deltaTime;
 
@@ -73,15 +98,22 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void MoveNextTurn() {
-		if (currentPath == null)
+		Debug.Log("Clicked on that button for sure!");
+		if (currentPathV3List.Count < 1)
 			return;
 
 		// Remove current / old nod from Pan
 		currentPath.RemoveAt(0);
 
 		// Now grab the new first node and move us to that Position
-		Vector3 destvec = map.HexCoordToWorldCoord(currentPath[0].Q, currentPath[0].R);
-		updateDestination(destvec);
+		// Vector3 destvec = map.HexCoordToWorldCoord(currentPath[0].Q, currentPath[0].R);
+		float ttlj = jump;
+		while (jump > 0){
+			int i = (int)(ttlj - jump);
+			Vector3 nextdest = currentPathV3List[i];
+			updateDestination(nextdest);
+			jump--;
+		}
 
 
 		if (currentPath.Count == 1) {
