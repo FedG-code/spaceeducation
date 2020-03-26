@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour {
 	public HexMap map;
 	public List<Node> currentPath = null;
 
-	// private List<Vector3> currentPathV3 = null;
+	private List<Vector3> currentPathV3 = null;
 
 	float speed = 6;
 
@@ -22,6 +22,12 @@ public class Unit : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		if(currentPath != null) {
+			this.GenerateCurrentPathVector();
+		}
+
+	}
+
+	private void GenerateCurrentPathVector() {
 			int currNode = 0;
 
 
@@ -39,10 +45,8 @@ public class Unit : MonoBehaviour {
 				currNode++;
 			}
 
-		}
-
 	}
-	void pdate () {
+	public void updateDestination (Vector3 v) {
 		// Move towards our destination
 
 		// NOTE!  This just moves directly there, but really you'd want to feed
@@ -53,6 +57,7 @@ public class Unit : MonoBehaviour {
 		// to hexes.
 
 
+		destination = v;
 		Vector3 dir = destination - transform.position;
 		Vector3 velocity = dir.normalized * speed * Time.deltaTime;
 
@@ -67,8 +72,23 @@ public class Unit : MonoBehaviour {
 
 	}
 
-	void NextTurn() {
-		// Set "destination" to be the position of the next tile
-		// in our pathfinding queue.
+	public void MoveNextTurn() {
+		if (currentPath == null)
+			return;
+
+		// Remove current / old nod from Pan
+		currentPath.RemoveAt(0);
+
+		// Now grab the new first node and move us to that Position
+		Vector3 destvec = map.HexCoordToWorldCoord(currentPath[0].Q, currentPath[0].R);
+		updateDestination(destvec);
+
+
+		if (currentPath.Count == 1) {
+			// We only have one tile left in the path, and that tile must be
+			// our ultimate destination: This is the current position of the unit.
+			// Therefore we only need to clear our pathfinding array:
+			currentPath = null;
+		}
 	}
 }

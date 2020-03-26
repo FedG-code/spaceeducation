@@ -71,7 +71,6 @@ public class HexMap : MonoBehaviour
             for (int row = 0; row < numRows; row++)
             {
                 // Node n = new Node(column,row);
-                // Debug.Log(string.Format("adding node at: {0},{1} ",n.Q, n.R));
                 graph[column, row] = new Node(column, row);
                 // graph[column, row].Q = column;
                 // graph[column, row].R = row;
@@ -104,10 +103,8 @@ public class HexMap : MonoBehaviour
             q = q % numRows;
         if (allowWrapNorthSouth)
             r = r % numColumns;
-        // Debug.Log(string.Format("getting node from {0}, {1}",q,r));
 
         Node n = graph[q, r];
-        // Debug.Log(string.Format("node at {0}, {1}",n.Q,n.R));
         return n;
     }
     public HexTileBase GetHexAt(int q, int r)
@@ -173,8 +170,6 @@ public class HexMap : MonoBehaviour
                 // Fed: omitted from tutorial 2 video, comments pointed me to
                 // this. This definiton of pos is what makes the square map
                 HexTileSpace h = new HexTileSpace(this, column, row);
-                // Debug.Log(string.Format("Creating Hex Tile at {0},{1}",h.Q, h.R));
-                //h.tiletype = -1;
                 hexes[column, row] = h;
 
 
@@ -251,7 +246,7 @@ public class HexMap : MonoBehaviour
         // selectedUnit.Q = q;
         // selectedUnit.R = r;
     }
-    float CostToEnterHex(int q, int r) {
+    public float CostToEnterHex(int q, int r) {
         HexTileBase h = GetHexAt(q,r);
         return h.movementCost;
 
@@ -284,16 +279,10 @@ public class HexMap : MonoBehaviour
     		selectedUnit.GetComponent<Unit>().R
         ];
 
-        Debug.LogFormat("source: {0},{1}",
-    		selectedUnit.GetComponent<Unit>().Q,
-    		selectedUnit.GetComponent<Unit>().R
-      );
-
         Node target = graph[
             q,
             r
         ];
-        Debug.LogFormat("target: {0},{1}", q,r );
 
         // set initial values for pathfinding
         dist[source] = 0;
@@ -331,8 +320,7 @@ public class HexMap : MonoBehaviour
             unvisited.Remove(u);
 
             foreach (Node n in u.edges) {
-                float alt = dist[u] + u.DistanceTo(n);
-                // Debug.LogFormat("Calc distance: {0}", alt);
+                float alt = dist[u] + CostToEnterHex(n.Q, n.R);
                 if (alt < dist[n]) {
                     dist[n] = alt;
                     prev[n] = u;
