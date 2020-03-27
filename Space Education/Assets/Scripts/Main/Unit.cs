@@ -47,6 +47,9 @@ public class Unit : MonoBehaviour {
 		if(currentPath != null) {
 			GenerateCurrentPathVectorList();
 		}
+		if(currentPathV3List != null) {
+			RenderPath();
+		}
 
 	}
 
@@ -56,20 +59,18 @@ public class Unit : MonoBehaviour {
 			lineRenderer.positionCount = currentPathV3List.Count;
 			lineRenderer.SetPositions(currentPathV3List.ToArray());
 
-			currentPath = null;
-
 	}
 	private void GenerateCurrentPathVectorList() {
+			currentPathV3List = new List<Vector3>();
 			foreach(Node n in currentPath ) {
 
 				Vector3 pos = map.HexCoordToWorldCoord( n.Q, n.R );
 				Debug.LogFormat("pos: {0}",pos.ToString());
-				currentPathV3List.Add( pos );
+
+				currentPathV3List.Add( pos + currentPathOffset );
 				Debug.LogFormat("currentPathV3List size: {0}",currentPathV3List.Count);
 			}
 			currentPath = null;
-			RenderPath();
-
 	}
 	public void updateDestination (Vector3 v) {
 		// Move towards our destination
@@ -109,6 +110,7 @@ public class Unit : MonoBehaviour {
 		// Vector3 destvec = map.HexCoordToWorldCoord(currentPath[0].Q, currentPath[0].R);
 		float ttlj = jump;
 		while (jump > 0){
+			Debug.LogFormat("taking move {0} out of {1}",jump,ttlj);
 			int i = (int)(ttlj - jump);
 			Vector3 nextdest = currentPathV3List[i];
 			updateDestination(nextdest);
