@@ -59,7 +59,7 @@ public class HexMap : MonoBehaviour
     public HexTileBase[,] hexes {get; set;}
     // Samuel: graph of hex tiles, representing each tile connections
     public Node[,] graph;
-    // List<Node> currentPath = null;
+    // List<Node> currentNodePath = null;
 
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
 
@@ -251,6 +251,13 @@ public class HexMap : MonoBehaviour
         return h.movementCost;
 
         }
+
+    public void BougeTonQueue() {
+        selectedUnit.GetComponent<Unit>().enqueueNextTurn();
+        Debug.LogFormat("size of vectorpath after click {0}",
+        selectedUnit.GetComponent<Unit>().currentPathV3List.Count
+        );
+    }
     public void GeneratePathTo(int q, int r) {
         /**
         * Author: Samuel Overington
@@ -265,7 +272,7 @@ public class HexMap : MonoBehaviour
 		// selectedUnit.GetComponent<Unit>().destination = h.Position();
 
         // Initialise current path to be empty at the beginning.
-        selectedUnit.GetComponent<Unit>().currentPath = null;
+        selectedUnit.GetComponent<Unit>().currentNodePath = null;
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
 
@@ -334,22 +341,22 @@ public class HexMap : MonoBehaviour
             // no possible route from target to source
             return;
         }
-        List<Node> currentPath = new List<Node>();
+        List<Node> currentNodePath = new List<Node>();
         Node curr = target;
 
         // Stepping through the "prev" chain, adding each node to our pathfinding
         while (curr != null) {
             // while there is still a previous Node to step backwards through
-            currentPath.Add(curr);
+            currentNodePath.Add(curr);
             curr = prev[curr];
 
         }
-        // right now, currentPath describes a step by step
+        // right now, currentNodePath describes a step by step
         // node path from our target to our source, so we
         // need to invert it.
-        currentPath.Reverse();
+        currentNodePath.Reverse();
 
-        selectedUnit.GetComponent<Unit>().currentPath = currentPath;
+        selectedUnit.GetComponent<Unit>().currentNodePath = currentNodePath;
 
     }
 
