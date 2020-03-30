@@ -9,7 +9,7 @@ public class ClickableTile : MonoBehaviour
     public int Q;
     public int R;
 
-    void OnMouseUp() {
+    void OnMouseDown() {
         if (!UICollisionDetect())
             map.GeneratePathTo(Q, R);
     }
