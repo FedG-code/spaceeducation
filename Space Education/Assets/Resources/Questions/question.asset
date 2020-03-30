@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
+  m_Name: question
+  m_EditorClassIdentifier: 
+  _info: "The Half-Life of Uranium-232 is 68.9 years. How much of a 100g U-232 is
+    left after 250 years? Given that t<sub>\xBD</sub> = ln(2)/\u03BB , N(t) = N<sub>0</sub>
+    e<sup>-\u03BBt</sup>."
+  _answers:
+  - _info: 8.2g
+    _isCorrect: 1
+  - _info: 6.4g
+    _isCorrect: 0
+  - _info: 9.7g
+    _isCorrect: 0
+  - _info: 5.6g
+    _isCorrect: 0
+  _useTimer: 0
+  _timer: 120
+  _answerType: 0
+  _addScore: 5

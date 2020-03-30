@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 640491fd343684fb7a53e7f0409451ac
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 770a5d61ab1824060aae546a6d888da6
+    path: Assets/Scenes/Redo.unity
+    guid: 4c1fddb7e7e4e8043aacb9c20c368dfa
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 593bdf91bf8cf46c989cd04f0e564201

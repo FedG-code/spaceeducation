@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a162b5d75741f44b295c3d74462878b7, type: 3}
+  m_Name: Question3
+  m_EditorClassIdentifier: 
+  _info: "What is the orbital period of a satellite given that T = \u221A(4\u03C0<sup>2</sup>R<sup>3</sup>
+    / GM). Gravitational Constant G = 6.67\xD710<sup>-11</sup>Nm<sup>2</sup>/kg<sup>2</sup>,
+    Mass M = 5.98 \xD710<sup>24</sup>kg, Orbital Radius R = 6.47\xD710<sup>6</sup>. "
+  _answers:
+  - _info: 5176s
+    _isCorrect: 1
+  - _info: 6382s
+    _isCorrect: 0
+  - _info: 3920s
+    _isCorrect: 0
+  - _info: 4313s
+    _isCorrect: 0
+  _useTimer: 0
+  _timer: 120
+  _answerType: 0
+  _addScore: 5
