@@ -8,9 +8,9 @@ public class MouseManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -27,7 +27,7 @@ public class MouseManager : MonoBehaviour {
 		}
 		// could also check if game is paused?
 		// if main menu is open?
-	
+
 		//Debug.Log( "Mouse Position: " + Input.mousePosition );
 
 		// This only works in orthographic, and only gives us the
@@ -69,7 +69,7 @@ public class MouseManager : MonoBehaviour {
 	void MouseOver_Hex(GameObject ourHitObject) {
 		Debug.Log("Raycast hit: " + ourHitObject.name );
 
-		// We know what we're mousing over. 
+		// We know what we're mousing over.
 		// Maybe we want to show a tooltip?
 
 		// Do we have a unit selected?  Because that might change
@@ -97,7 +97,7 @@ public class MouseManager : MonoBehaviour {
 				mr.material.color = Color.white;
 			}
 			else {
-				mr.material.color = Color.red; 	
+				mr.material.color = Color.red;
 			}
 
 			// If we have a unit selected, let's move it to this tile!

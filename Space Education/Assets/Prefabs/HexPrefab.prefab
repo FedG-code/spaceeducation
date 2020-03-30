@@ -102,7 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290264239849946731}
+  - component: {fileID: -1476446778789434493}
   - component: {fileID: -8921217736199767673}
+  - component: {fileID: 963596041857694835}
   m_Layer: 0
   m_Name: HexPrefab
   m_TagString: Untagged
@@ -126,6 +128,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-1476446778789434493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290264239849946708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-8921217736199767673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +154,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HexMap: {fileID: 0}
+--- !u!114 &963596041857694835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290264239849946708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6916f3d443749c1bda6bdd58f29859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileQ: 0
+  tileR: 0
 --- !u!64 &1290264238987845340
 MeshCollider:
   m_ObjectHideFlags: 0
