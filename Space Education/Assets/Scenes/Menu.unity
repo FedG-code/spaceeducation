@@ -2666,6 +2666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851311248}
   - component: {fileID: 851311247}
+  - component: {fileID: 851311249}
   m_Layer: 0
   m_Name: BackgroundAudio
   m_TagString: Untagged
@@ -2783,6 +2784,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &851311249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851311246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8b8c37cf1cd4d43bf9bb1586d7ee76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &853408149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,7 +2861,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4292935424
   m_fontColor: {r: 0, g: 1, b: 0.8777206, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -4093,7 +4106,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225217774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1422165122}
@@ -4103,8 +4116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9000244, y: -125.5}
-  m_SizeDelta: {x: 253.5, y: 106}
+  m_AnchoredPosition: {x: -5, y: -117}
+  m_SizeDelta: {x: 247, y: 78.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225217776
 MonoBehaviour:
@@ -4426,7 +4439,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293590784
   m_fontColor: {r: 0, g: 1, b: 0.91823196, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -4857,7 +4870,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293260544
   m_fontColor: {r: 0, g: 0.9622642, b: 0.89926314, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -5307,7 +5320,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2.9, y: 6}
-  m_SizeDelta: {x: 350, y: 46}
+  m_SizeDelta: {x: 350, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544802575
 MonoBehaviour:
@@ -5355,11 +5368,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 851311249}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
@@ -6101,8 +6114,8 @@ RectTransform:
   m_Father: {fileID: 1272936751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6445,7 +6458,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
