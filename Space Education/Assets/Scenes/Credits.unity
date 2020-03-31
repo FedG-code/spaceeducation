@@ -162,9 +162,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "CREDITS\n\nAnonymous Armadillos Studio\n\nCREATED BY \nABBIE MACE, \nBENJAMIN
     SMITH, \nFEDERICO GIOVANNINI, \nKRESDA RATTANASUDSAI, \nSAFIYA MERALI, \nSAMUEL
-    OVERINGTON\n\nMUSIC \nRICH DOUGLAS-EVOCHRON MERCENARY\nJOE HISAISHI -JOURNEY
-    TO THE WEST\n\nASSET PACKAGES\nTEXTMESHPRO\nSCIFILOOPS\n\nSPECIAL THANKS\nJON
-    MCNAMARA\nDR MARK BAXENDALE\nQuill18\n\n\n\n\n"
+    OVERINGTON\n\nMUSIC \nRICH DOUGLAS - EVOCHRON MERCENARY, Orbiting, The Outlands,
+    Fate of the Atlantis\n\nJOE HISAISHI - JOURNEY TO THE WEST\n\nASSET PACKAGES\nTEXTMESHPRO\nSCIFILOOPS\nVast
+    Outer Space\nClean Vector Icon\n\n\nSPECIAL THANKS\nJON MCNAMARA\nDR MARK BAXENDALE\nQuill18\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
   m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
@@ -234,12 +234,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: -88.5838, z: -483.57654, w: 0}
   m_textInfo:
     textComponent: {fileID: 237673443}
-    characterCount: 331
+    characterCount: 417
     spriteCount: 0
-    spaceCount: 56
-    wordCount: 40
+    spaceCount: 74
+    wordCount: 56
     linkCount: 0
-    lineCount: 28
+    lineCount: 33
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -871,36 +871,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1201273276
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1411982117}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1201273277}
-  m_Layer: 0
-  m_Name: Distant_Stars_Dense (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1201273277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1411982117}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201273276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1411982117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -942,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480122, guid: aed921ccd7a51cd47bcf557c266c33fa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480122, guid: aed921ccd7a51cd47bcf557c266c33fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
