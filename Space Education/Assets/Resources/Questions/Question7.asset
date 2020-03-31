@@ -16,13 +16,13 @@ MonoBehaviour:
     reduces its velocity to 2ms<sup>-1</sup>. Calculate the deceleration of the aircraft
     during this time. a = (v-u)/t. '
   _answers:
-  - _info: -0.2ms<sup>-2</sup>
+  - _info: -0.2 ms<sup>-2</sup>
     _isCorrect: 1
-  - _info: 0.4ms<sup>-2</sup>
+  - _info: 0.4 ms<sup>-2</sup>
     _isCorrect: 0
-  - _info: -0.4ms<sup>-2</sup>
+  - _info: -0.4 ms<sup>-2</sup>
     _isCorrect: 0
-  - _info: 0.2ms<sup>-2</sup>
+  - _info: 0.2 ms<sup>-2</sup>
     _isCorrect: 0
   _useTimer: 0
   _timer: 120

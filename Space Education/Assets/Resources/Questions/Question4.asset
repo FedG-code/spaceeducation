@@ -18,13 +18,13 @@ MonoBehaviour:
     the radius of the orbit. Given that r = mv/BQ. m = 9.1\xD710<sup>-31</sup>kg,
     Q = 1.6\xD710<sup>-19</sup>C."
   _answers:
-  - _info: 21mm
+  - _info: 21 mm
     _isCorrect: 1
-  - _info: 25mm
+  - _info: 25 mm
     _isCorrect: 0
-  - _info: 32mm
+  - _info: 32 mm
     _isCorrect: 0
-  - _info: 35mm
+  - _info: 35 mm
     _isCorrect: 0
   _useTimer: 0
   _timer: 120

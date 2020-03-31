@@ -1489,8 +1489,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Research Points : x'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
+  m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1532,7 +1533,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 9
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1561,7 +1562,7 @@ MonoBehaviour:
     spaceCount: 3
     wordCount: 3
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5268,8 +5269,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score : x'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
+  m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6911,7 +6913,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 89.3, y: 87.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1486510168
 MonoBehaviour:
@@ -8968,8 +8970,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Question
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
+  m_sharedMaterial: {fileID: 2269315643773003818, guid: 9ce6c2063aa6a409d928570493965b75,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9032,7 +9035,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.1326718, y: 2, z: 100.286476, w: 2}
+  m_margin: {x: 1.1326718, y: 2, z: 89.56179, w: 2}
   m_textInfo:
     textComponent: {fileID: 1993608541}
     characterCount: 8

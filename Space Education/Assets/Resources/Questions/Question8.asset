@@ -16,13 +16,13 @@ MonoBehaviour:
     at a velocity 3\xD710<sup>2</sup>ms<sup>-1</sup> around a planet. What is the
     centripetal force? "
   _answers:
-  - _info: 700kN
+  - _info: 700 kN
     _isCorrect: 1
-  - _info: 550kN
+  - _info: 550 kN
     _isCorrect: 0
-  - _info: 730kN
+  - _info: 730 kN
     _isCorrect: 0
-  - _info: 670kN
+  - _info: 670 kN
     _isCorrect: 0
   _useTimer: 0
   _timer: 120

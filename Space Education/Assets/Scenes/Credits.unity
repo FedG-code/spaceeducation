@@ -162,8 +162,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "CREDITS\n\nAnonymous Armadillos Studio\n\nCREATED BY \nABBIE MACE, \nBENJAMIN
     SMITH, \nFEDERICO GIOVANNINI, \nKRESDA RATTANASUDSAI, \nSAFIYA MERALI, \nSAMUEL
-    OVERINGTON\n\nMUSIC \nRICH DOUGLAS - EVOCHRON MERCENARY, Orbiting, The Outlands,
-    Fate of the Atlantis\n\nJOE HISAISHI - JOURNEY TO THE WEST\n\nASSET PACKAGES\nTEXTMESHPRO\nSCIFILOOPS\nVast
+    OVERINGTON\n\nMUSIC \nRICH DOUGLAS - EVOCHRON MERCENARY, \nOrbiting, The Outlands,
+    \nFate of the Atlantis\n\nJOE HISAISHI - JOURNEY TO THE WEST\n\nASSET PACKAGES\nTEXTMESHPRO\nSCIFILOOPS\nVast
     Outer Space\nClean Vector Icon\n\n\nSPECIAL THANKS\nJON MCNAMARA\nDR MARK BAXENDALE\nQuill18\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ce6c2063aa6a409d928570493965b75, type: 2}
@@ -234,12 +234,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: -88.5838, z: -483.57654, w: 0}
   m_textInfo:
     textComponent: {fileID: 237673443}
-    characterCount: 417
+    characterCount: 419
     spriteCount: 0
-    spaceCount: 74
+    spaceCount: 76
     wordCount: 56
     linkCount: 0
-    lineCount: 33
+    lineCount: 34
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -532,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 103, y: 17}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &959068145

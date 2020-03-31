@@ -16,13 +16,13 @@ MonoBehaviour:
     left after 250 years? Given that t<sub>\xBD</sub> = ln(2)/\u03BB , N(t) = N<sub>0</sub>
     e<sup>-\u03BBt</sup>."
   _answers:
-  - _info: 8.2g
+  - _info: 8.2 g
     _isCorrect: 1
-  - _info: 6.4g
+  - _info: 6.4 g
     _isCorrect: 0
-  - _info: 9.7g
+  - _info: 9.7 g
     _isCorrect: 0
-  - _info: 5.6g
+  - _info: 5.6 g
     _isCorrect: 0
   _useTimer: 0
   _timer: 120

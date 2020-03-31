@@ -16,13 +16,13 @@ MonoBehaviour:
     / GM). Gravitational Constant G = 6.67\xD710<sup>-11</sup>Nm<sup>2</sup>/kg<sup>2</sup>,
     Mass M = 5.98 \xD710<sup>24</sup>kg, Orbital Radius R = 6.47\xD710<sup>6</sup>. "
   _answers:
-  - _info: 5176s
+  - _info: 5176 s
     _isCorrect: 1
-  - _info: 6382s
+  - _info: 6382 s
     _isCorrect: 0
-  - _info: 3920s
+  - _info: 3920 s
     _isCorrect: 0
-  - _info: 4313s
+  - _info: 4313 s
     _isCorrect: 0
   _useTimer: 0
   _timer: 120

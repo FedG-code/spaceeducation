@@ -16,13 +16,13 @@ MonoBehaviour:
     of 80ms<sup>-1</sup>. Calculate the power of the engine at this speed. Given
     that P = Fv.
   _answers:
-  - _info: "3.2 \xD7 10<sup>6</sup>W"
+  - _info: "3.2 \xD7 10<sup>6</sup> W"
     _isCorrect: 1
-  - _info: "3.2 \xD7 10<sup>4</sup>W"
+  - _info: "3.2 \xD7 10<sup>4</sup> W"
     _isCorrect: 0
-  - _info: "3.2 \xD7 10<sup>5</sup>W"
+  - _info: "3.2 \xD7 10<sup>5</sup> W"
     _isCorrect: 0
-  - _info: "3.2 \xD7 10<sup>7</sup>W"
+  - _info: "3.2 \xD7 10<sup>7</sup> W"
     _isCorrect: 0
   _useTimer: 0
   _timer: 120
