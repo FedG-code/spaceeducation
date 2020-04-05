@@ -8,7 +8,7 @@ image: assets/images/unitmovement.jpg
 
 A core theme in game making is how a player moves from one position to another. Because we have designed our game using a hexagonal tile based system where, for each turn the player unit moves from one tile to any connecting tile.  We chose to create a path queue, so that when a tile has been clicked; the shortest path is found using Dijkstras algorithm from the Players units current tile, to the destination tile.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/glupcI_zy58" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/glupcI_zy58?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 # Dijkstras Algorithm, and Hex Nodes and Edged
