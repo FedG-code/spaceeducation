@@ -253,10 +253,8 @@ public class HexMap : MonoBehaviour
         }
 
     public void BougeTonQueue() {
+        // Tells selectedUnit to make its next move, it does this by enqueueing next node
         selectedUnit.GetComponent<Unit>().enqueueNextTurn();
-        Debug.LogFormat("size of vectorpath after click {0}",
-        selectedUnit.GetComponent<Unit>().currentPathV3List.Count
-        );
     }
     public void GeneratePathTo(int q, int r) {
         /**
@@ -268,11 +266,15 @@ public class HexMap : MonoBehaviour
 
 
 
+
         // movement here
 		// selectedUnit.GetComponent<Unit>().destination = h.Position();
 
         // Initialise current path to be empty at the beginning.
-        selectedUnit.GetComponent<Unit>().currentNodePath = null;
+
+        Unit unit = selectedUnit.GetComponent<Unit>();
+
+        unit.currentNodePath = null;
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
 
@@ -282,8 +284,8 @@ public class HexMap : MonoBehaviour
 
 
         Node source = graph[
-    		selectedUnit.GetComponent<Unit>().Q,
-    		selectedUnit.GetComponent<Unit>().R
+    		unit.Q,
+    		unit.R
         ];
 
         Node target = graph[
@@ -356,7 +358,9 @@ public class HexMap : MonoBehaviour
         // need to invert it.
         currentNodePath.Reverse();
 
-        selectedUnit.GetComponent<Unit>().currentNodePath = currentNodePath;
+        // unit.currentNodePath = currentNodePath;
+        unit.GenerateNewQueue(currentNodePath);
+        // unit.RenderPath(currentNodePath);
 
     }
 
