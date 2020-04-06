@@ -13,13 +13,14 @@ public class HexMap_Continent : HexMap
         GenerateTile(8, 23, 2,HexTileBase.TILE_TYPE.STAR);
 
         //planet tile
-        GenerateTile(8, 26, 0,HexTileBase.TILE_TYPE.PLANET);
+        GenerateTile(9, 26, 0,HexTileBase.TILE_TYPE.PLANET);
 
         GenerateTile(6, 30, 0,HexTileBase.TILE_TYPE.PLANET);
 
         GenerateTile(12, 29, 0,HexTileBase.TILE_TYPE.PLANET);
 
         GenerateTile(15, 24,0,HexTileBase.TILE_TYPE.EVENT);
+        GenerateTile(10, 26,0,HexTileBase.TILE_TYPE.EVENT);// nextdoor
 
         GenerateTile(17, 32, 3,HexTileBase.TILE_TYPE.BLACKHOLE);
 
@@ -63,7 +64,7 @@ public class HexMap_Continent : HexMap
         TileFactory factory = new TileFactory();
 
         // Get the Space tile at the location specified
-        HexTileBase centerHex = GetHexAt(q+1, r);
+        HexTileBase centerHex = GetHexAt(q, r);
         // Get a new tile of the specified type from the factory
         HexTileBase newTile = factory.GetTile(this, centerHex.Q, centerHex.R, tiletype, centerHex.GameObject);
         // set the new tile's gameObject to that of the tile being replaced

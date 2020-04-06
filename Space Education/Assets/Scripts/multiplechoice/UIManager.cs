@@ -28,7 +28,7 @@ public struct UIManagerParameters
 
 // mark struct as serializable to make it appear in inspector
 [Serializable()]
-public struct UIElements 
+public struct UIElements
 {
     [SerializeField]  RectTransform answersContentArea;
     public RectTransform AnswersContentArea{get{return answersContentArea;}}
@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameEvents events;
+    [SerializeField] GameObject map;
 
     [Header("UI Elements(Prefabs")]
     [SerializeField] AnswerData answerPrefab;
@@ -156,7 +157,7 @@ public class UIManager : MonoBehaviour
                 uIElements.ResolutionStateInfoText.text = "CORRECT!";
                 uIElements.ResolutionScoreText.text = "+" + score;
 
-                
+
 
                 break;
             case ResolutionScreenType.Incorrect:
@@ -164,7 +165,7 @@ public class UIManager : MonoBehaviour
                 uIElements.ResolutionStateInfoText.text = "WRONG!";
                 uIElements.ResolutionScoreText.text = "-" + score;
 
-               
+
 
                 break;
             case ResolutionScreenType.Finish:
@@ -179,7 +180,7 @@ public class UIManager : MonoBehaviour
                 uIElements.HighScoreText.text = ((highscore > events.StartupHighscore)
                     ? "<color=yellow>new</color>" : string.Empty) + "Highscore: " + highscore;
 
-                
+
                 break;
         }
     }

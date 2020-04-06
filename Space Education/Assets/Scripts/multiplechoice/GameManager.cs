@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
         {
             UpdateTimer(question.useTimer);
         }
+        Debug.Log("Showing a Quiz question screen");
 
     }
 

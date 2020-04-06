@@ -1042,6 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a956e2b2ae844569725bf71420a529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
   events: {fileID: 11400000, guid: b42f0bafd32b74915aab9ed6f52b001b, type: 2}
   timerAnimtor: {fileID: 331249580491497567}
   timerText: {fileID: 331249580399606350}
@@ -1060,6 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 11400000, guid: b42f0bafd32b74915aab9ed6f52b001b, type: 2}
+  map: {fileID: 1267434507176313733, guid: 8976cea9e925a4bcdba579e22828781e, type: 3}
   answerPrefab: {fileID: 101818638188362045, guid: 317c6f40be35f4f32a10df93f5ab091d,
     type: 3}
   uIElements:
@@ -1906,7 +1908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5516090454363633554}
   m_Layer: 0
-  m_Name: Quiz
+  m_Name: QuizData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1936,6 +1938,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 331249582446287978}
     m_Modifications:
+    - target: {fileID: 391394505090159289, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391394505090159289, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 391394505300879150, guid: 3b8122a2feeda453b9a2c6814649952f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2051,6 +2063,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 331249581702153564}
+    - target: {fileID: 391394505664462476, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391394505664462476, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391394505664462476, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391394507039718255, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391394507039718255, guid: 3b8122a2feeda453b9a2c6814649952f,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.7656982
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b8122a2feeda453b9a2c6814649952f, type: 3}
 --- !u!114 &331249581543672994 stripped
