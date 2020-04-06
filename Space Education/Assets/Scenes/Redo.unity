@@ -695,7 +695,12 @@ PrefabInstance:
     - target: {fileID: 1671159670, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
       propertyPath: UnitResourceShipPrefab
       value: 
-      objectReference: {fileID: 1718406266474456, guid: d1ccc45dbb5133a40938f229f5052c6e,
+      objectReference: {fileID: 1760989465394406598, guid: 48b8940bcd4e749069c8b99f32111ce1,
+        type: 3}
+    - target: {fileID: 1671159670, guid: 0be8ec528789c48929168aa477cf38cd, type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 1760989465394406598, guid: 48b8940bcd4e749069c8b99f32111ce1,
         type: 3}
     - target: {fileID: 221645042692420964, guid: 0be8ec528789c48929168aa477cf38cd,
         type: 3}
@@ -760,7 +765,7 @@ PrefabInstance:
     - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2438163858357879759, guid: 0be8ec528789c48929168aa477cf38cd,
         type: 3}
@@ -915,6 +920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MouseController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791092334642106679, guid: f2ed6959a018f478ebc862d05a347ac7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2ed6959a018f478ebc862d05a347ac7, type: 3}

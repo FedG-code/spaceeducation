@@ -7,7 +7,7 @@ public class CameraMouseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     bool isDraggingCamera = false;
@@ -33,7 +33,7 @@ public class CameraMouseController : MonoBehaviour
 
             isDraggingCamera = true;
 
-            
+
             lastMousePosition = hitPos;
         }
         else if (Input.GetMouseButtonUp(0))
@@ -62,18 +62,18 @@ public class CameraMouseController : MonoBehaviour
         float minHeight = 2;
         float maxHeight = 20;
         if (Mathf.Abs(scrollAmount) > 0.01f)
-        { 
+        {
 
             // Move camera towards hitPos
             Vector3 dir = hitPos - Camera.main.transform.position;
 
             Camera.main.transform.Translate(dir * scrollAmount, Space.World);
 
-            //Make sure there's a min/max y value so we don't zoom past the map  
+            //Make sure there's a min/max y value so we don't zoom past the map
             Vector3 p = Camera.main.transform.position;
 
-            // ignore the zoom action after the zoom is at max position 
-            if (scrollAmount > 0 || p.y < (maxHeight - 0.1f))  
+            // ignore the zoom action after the zoom is at max position
+            if (scrollAmount > 0 || p.y < (maxHeight - 0.1f))
             {
                 Camera.main.transform.Translate(dir * scrollAmount, Space.World);
             }
@@ -92,7 +92,7 @@ public class CameraMouseController : MonoBehaviour
             float lowZoom = minHeight + 3;
             float highZoom = maxHeight - 10;
 
-            
+
 
             //if (p.y < lowZoom)
             //{
@@ -105,7 +105,7 @@ public class CameraMouseController : MonoBehaviour
             //}
             //else if (p.y > highZoom)
             //{
-            //    //camera tilt from 60 to 90 degree 
+            //    //camera tilt from 60 to 90 degree
             //    Camera.main.transform.rotation = Quaternion.Euler(
             //        Mathf.Lerp(60, 90, ( (p.y - highZoom) / (maxHeight - highZoom))),
             //        Camera.main.transform.rotation.eulerAngles.y,
@@ -118,7 +118,7 @@ public class CameraMouseController : MonoBehaviour
             //        60,
             //        Camera.main.transform.rotation.eulerAngles.y,
             //        Camera.main.transform.rotation.eulerAngles.z
-            //        ); 
+            //        );
             //}
         }
         Camera.main.transform.rotation = Quaternion.Euler(
