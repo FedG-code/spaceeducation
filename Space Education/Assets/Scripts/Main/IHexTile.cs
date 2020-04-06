@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 public interface IHexTile
 {
     bool PlayerCanMoveHere();
-    void DoAction();
+    void enterHex();
 }
-

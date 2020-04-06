@@ -19,7 +19,7 @@ public class HexTilePlanet : HexTileBase, IHexTile
     public bool Populated { get; set; }
 
     //public void DoAction(playerObject)
-    public void DoAction()
+	public void enterHex() {
     {
         if (this.Populated)
         {

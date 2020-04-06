@@ -13,7 +13,7 @@ public class HexTileSpace: HexTileBase, IHexTile
 
     }
 
-    public void DoAction()
+	public void enterHex() {
     {
         // Nothing to do...
     }

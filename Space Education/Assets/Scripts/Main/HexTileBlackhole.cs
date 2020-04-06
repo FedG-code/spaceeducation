@@ -15,7 +15,7 @@ public class HexTileBlackhole : HexTileBase, IHexTile
         mr.material = hexMap.MatBlackHole;
     }
 
-    public void DoAction()
+	public void enterHex() {
     { //Pop-up that you cant move there as it's a black hole...
     }
     public bool PlayerCanMoveHere()
