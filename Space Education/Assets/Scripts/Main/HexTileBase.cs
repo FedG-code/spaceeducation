@@ -15,6 +15,9 @@ public class HexTileBase
         this.S = -(q + r); // Something
 
         this.movementCost = 1f; // default
+        hasAction = false;
+
+
 
     }
 
@@ -24,20 +27,15 @@ public class HexTileBase
     public readonly int R; // Row
     public readonly int S;
     public float movementCost;
-
     public enum TILE_TYPE { STAR, PLANET, ASTEROID, EVENT, BLACKHOLE, BADPLANET, SPACE };
 
     // TODO? Does this override unity gameobject?
     public GameObject GameObject { get; set; }
 
+    public bool hasAction;
     public void DoAction() {
-        
-    }
-	public void enterHex() {
-        // This function gets run every time the unit lands on it
 
     }
-
 
     //public float Moisture;
 

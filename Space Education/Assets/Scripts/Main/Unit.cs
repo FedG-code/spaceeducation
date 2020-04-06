@@ -22,15 +22,18 @@ public class Unit : MonoBehaviour {
 
 	float speed = 6;
 
+
+	// Quizz variables
+	public bool NextTileHasAction;
+	public bool quizzloaded;
+
 	// Use this for initialization
 	void Start () {
 		currentPathV3List = new List<Vector3>();
 		destinationList = new List<Node>();
-
-		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-
 		destination = transform.position;
 
+		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 0;
@@ -43,13 +46,17 @@ public class Unit : MonoBehaviour {
 			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
 		);
 		lineRenderer.colorGradient = gradient;
+
+		// Quizz actions
+		quizzloaded = false;
+		NextTileHasAction = false;
 	}
 
 	void Update() {
 
 		// user has clicked the move button which triggers enqueueNextTurn
 		// which enqueues next (MP) position vectors into destinationList
-		if(destination != transform.position){
+		if(destination != transform.position ){
 			// if there is a destination vector, move there.
 
 			// Move to destination
@@ -63,7 +70,15 @@ public class Unit : MonoBehaviour {
 		    // Vector3 targetPosition = new Target.TransformPoint(dir);
 
 			transform.Translate(velocity);
-		} else if (destinationList.Count > 0 ){
+		} else if(destination == transform.position & NextTileHasAction == true & quizzloaded == false){
+			LoadQuestionScreen();
+			quizzloaded = true;
+
+		} else if(destination == transform.position & NextTileHasAction == true & quizzloaded == true){
+
+		// do nothing until quizzloaded = false;
+
+		} else if (destinationList.Count > 0){
 
 			// check if there is anymore nodes on our destinationList, and we are not at our current destination
 			// pop them off and set the next destination.
@@ -74,13 +89,12 @@ public class Unit : MonoBehaviour {
 			Q = n.Q;
 			R = n.R;
 
+			NextTileHasAction = tileEventCheck(Q,R);
+
 			// currentNodePath.RemoveAt(0);
 			RegenerateCurrentPath();
-			Debug.LogFormat("{0} -> {1}",destination, transform.position);
 
 			destination = node2vec3(n);
-			Debug.LogFormat("{0} -> {1}",destination, transform.position);
-			Debug.Log("Loading a new Node onto destination as a vector");
 		} else {
 			// Nothing to do
 			// Debug.Log("There is nothing to do here");
@@ -92,13 +106,13 @@ public class Unit : MonoBehaviour {
 		Quizz questions
 	**/
 	// Check if current tile hass a question:
-	public void tileEventCheck(int Q, int R) {
+	public bool tileEventCheck(int Q, int R) {
 		HexTileBase h = map.GetHexAt(Q, R);
-		h.enterHex();
+		return h.hasAction;
 	}
 	// load ui element
 	public void LoadQuestionScreen() {
-
+		Debug.Log("A Question screen here should be loaded now.");
 	}
 
 

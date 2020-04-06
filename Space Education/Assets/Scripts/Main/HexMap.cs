@@ -11,20 +11,15 @@ public class HexMap : MonoBehaviour
     // Samuel: Current player / unit. This has been manually sected, by dragging
     // the unit gameobject into this field
     public GameObject selectedUnit;
-
     public GameObject HexPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         GenerateMap();
-
         SpawnUnitAt(this.selectedUnit, 9,26);
-
         GenerateNodes();
-
     }
 
     /*
@@ -59,9 +54,10 @@ public class HexMap : MonoBehaviour
     public HexTileBase[,] hexes {get; set;}
     // Samuel: graph of hex tiles, representing each tile connections
     public Node[,] graph;
-    // List<Node> currentNodePath = null;
-
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
+
+    // The current quizz
+    public GameObject Quizz;
 
     public void GenerateNodes() {
         // Samuel: populate empy array of nodes the size of our map

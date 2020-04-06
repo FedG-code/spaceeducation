@@ -12,12 +12,12 @@ public class HexTileEvent : HexTileBase, IHexTile
     {
         MeshRenderer mr = gameObject.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMap.MatEvent;
+        hasAction = true;
 
     }
-	public void enterHex() {
+	public void DoAction() {
       // Have random scenario pop up that gives you a boost of some description
-
-
+		Debug.Log("There is something to do");
     }
 
 
