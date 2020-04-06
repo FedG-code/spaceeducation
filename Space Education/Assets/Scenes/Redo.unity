@@ -128,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 331249580345227226, guid: 868c170ddefec419696c0e91e8e20805,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 331249580345227236, guid: 868c170ddefec419696c0e91e8e20805,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
     - target: {fileID: 331249580395305579, guid: 868c170ddefec419696c0e91e8e20805,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -221,6 +231,11 @@ PrefabInstance:
     - target: {fileID: 331249581149705526, guid: 868c170ddefec419696c0e91e8e20805,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331249581293076521, guid: 868c170ddefec419696c0e91e8e20805,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 331249581445349306, guid: 868c170ddefec419696c0e91e8e20805,
