@@ -63,7 +63,7 @@ public class Unit : MonoBehaviour {
 		    // Vector3 targetPosition = new Target.TransformPoint(dir);
 
 			transform.Translate(velocity);
-		} else if (destinationList.Count > 0){
+		} else if (destinationList.Count > 0 ){
 
 			// check if there is anymore nodes on our destinationList, and we are not at our current destination
 			// pop them off and set the next destination.
@@ -77,14 +77,34 @@ public class Unit : MonoBehaviour {
 			// currentNodePath.RemoveAt(0);
 			RegenerateCurrentPath();
 			Debug.LogFormat("{0} -> {1}",destination, transform.position);
+
 			destination = node2vec3(n);
 			Debug.LogFormat("{0} -> {1}",destination, transform.position);
 			Debug.Log("Loading a new Node onto destination as a vector");
 		} else {
 			// Nothing to do
 			// Debug.Log("There is nothing to do here");
+
 		}
 	} // Update
+
+	/**
+		Quizz questions
+	**/
+	// Check if current tile hass a question:
+	public void tileEventCheck(int Q, int R) {
+		HexTileBase h = map.GetHexAt(Q, R);
+		h.enterHex();
+	}
+	// load ui element
+	public void LoadQuestionScreen(int ) {
+
+	}
+
+
+	/**
+		Unit Movement code
+	**/
 
 	Vector3 node2vec3(Node n){
 		return map.HexCoordToWorldCoord( n.Q, n.R );

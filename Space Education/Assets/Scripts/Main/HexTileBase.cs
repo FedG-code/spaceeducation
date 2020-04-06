@@ -30,6 +30,11 @@ public class HexTileBase
     // TODO? Does this override unity gameobject?
     public GameObject GameObject { get; set; }
 
+	public void enterHex() {
+        // This function gets run every time the unit lands on it
+
+    }
+
 
     //public float Moisture;
 
@@ -38,8 +43,6 @@ public class HexTileBase
     static readonly float WIDTH_MULTIPLIER = Mathf.Sqrt(3) / 2;
     float radius = 1f;
 
-    //bool allowWrapEastWest = true;
-    //bool allowWrapNorthSouth = false;
 
     public Vector3 Position()
     {

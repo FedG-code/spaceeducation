@@ -14,7 +14,7 @@ public class HexTileEvent : HexTileBase, IHexTile
         mr.material = hexMap.MatEvent;
 
     }
-    public void DoAction()
+	public void enterHex() {
     {
       // Have random scenario pop up that gives you a boost of some description
 
