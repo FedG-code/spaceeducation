@@ -20,7 +20,6 @@ public class HexTilePlanet : HexTileBase, IHexTile
 
     //public void DoAction(playerObject)
 	public void enterHex() {
-    {
         if (this.Populated)
         {
             //Pop-up scenario that relates to a populated planet with a qustion to answer which then gives you some sort of resource

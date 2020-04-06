@@ -97,7 +97,7 @@ public class Unit : MonoBehaviour {
 		h.enterHex();
 	}
 	// load ui element
-	public void LoadQuestionScreen(int ) {
+	public void LoadQuestionScreen() {
 
 	}
 

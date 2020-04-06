@@ -17,7 +17,6 @@ public class HexTileStar : HexTileBase, IHexTile
 
 
 	public void enterHex() {
-    {
 
         // Nothing to do here. Can't land on a star...
         // Maybe have a pop-up to say you can't land on the star?...

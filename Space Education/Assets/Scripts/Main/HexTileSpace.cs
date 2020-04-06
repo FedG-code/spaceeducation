@@ -14,7 +14,6 @@ public class HexTileSpace: HexTileBase, IHexTile
     }
 
 	public void enterHex() {
-    {
         // Nothing to do...
     }
 

@@ -30,6 +30,9 @@ public class HexTileBase
     // TODO? Does this override unity gameobject?
     public GameObject GameObject { get; set; }
 
+    public void DoAction() {
+        
+    }
 	public void enterHex() {
         // This function gets run every time the unit lands on it
 
