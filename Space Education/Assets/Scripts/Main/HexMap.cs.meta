@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - selectedUnit: {instanceID: 0}
   - HexPrefab: {fileID: 1290264239849946708, guid: 6ed7479dbc0fa4a57bd081fbf672e111,
       type: 3}
   - TileMesh: {fileID: 2534964839176971238, guid: f41926a2dace64eee830b4e0a8283c5a,
@@ -15,6 +16,7 @@ MonoImporter:
   - MatPlanet: {fileID: 2100000, guid: 6f67de78031b2054f9a6ef1c4ed9a8e3, type: 2}
   - MatEvent: {fileID: 2100000, guid: 1a0be13969258504f9bd7cc93bbea083, type: 2}
   - MatBadPlanet: {fileID: 2100000, guid: c7b033d22a6f24c42a0693197eefb472, type: 2}
+  - Quizz: {fileID: 5996186466409852094, guid: 868c170ddefec419696c0e91e8e20805, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
