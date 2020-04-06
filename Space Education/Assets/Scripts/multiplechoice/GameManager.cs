@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
         timerStateParaHash = Animator.StringToHash("TimerState");
 
-        //generate random value 
+        //generate random value
         var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         UnityEngine.Random.InitState(seed);
 
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAnswers(AnswerData newAnswer)
     {   // check the type of answer, if it's single then we just clear the existing one
-        //and update with a new answer 
+        //and update with a new answer
         if (Questions[currentQuestion].GetAnswerType == Question.AnswerType.Single)
         {
             foreach (var answer in PickedAnswers)
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         bool isCorrect = CheckAnswers();
         FinishedQuestions.Add(currentQuestion);
 
-        //Update the score, if the answert of time to wait till next question  is incorrect subtract the addscore value 
+        //Update the score, if the answert of time to wait till next question  is incorrect subtract the addscore value
         UpdateScore((isCorrect) ? Questions[currentQuestion].AddScore : -Questions[currentQuestion].AddScore);
 
 
@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour
 
 
     IEnumerator WaitTillNextRound()
-    {   // the amount of time to wait till next question 
+    {   // the amount of time to wait till next question
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
         //display a new question
         Display();
@@ -271,7 +271,7 @@ public class GameManager : MonoBehaviour
         if (PickedAnswers.Count > 0)
         { // list of correct answers
             List<int> c = Questions[currentQuestion].GetCorrectAnswers();
-            // list of picked answers, select the picked answer and put into a list 
+            // list of picked answers, select the picked answer and put into a list
             List<int> p = PickedAnswers.Select(x => x.AnswerIndex).ToList();
 
             // .Except() removes all the elements except the ones in p
@@ -300,6 +300,7 @@ public class GameManager : MonoBehaviour
             _questions[i] = (Question)objs[i];
         }
     }
+
 
 
 
