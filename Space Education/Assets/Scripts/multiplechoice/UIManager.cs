@@ -126,7 +126,7 @@ public class UIManager : MonoBehaviour
         UpdateResUI(type, score);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
         //disable the main game functionality, so it will not receive any input
-        uIElements.MainCanvasGroup.blocksRaycasts = false;
+        // uIElements.MainCanvasGroup.blocksRaycasts = false;
 
         if (type != ResolutionScreenType.Finish)
         {
@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 1);
-        uIElements.MainCanvasGroup.blocksRaycasts = true;
+        // uIElements.MainCanvasGroup.blocksRaycasts = true;
     }
 
     void UpdateResUI(ResolutionScreenType type, int score)
@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour
                 //Display Highscore
                 //Check if the highscore is a new highscore
                 uIElements.HighScoreText.text = ((highscore > events.StartupHighscore)
-                    ? "<color=yellow>new</color>" : string.Empty) + "Highscore: " + highscore;
+                    ? "<color=yellow>new</color>" : string.Empty) + "Research Points: " + highscore;
 
 
                 break;
