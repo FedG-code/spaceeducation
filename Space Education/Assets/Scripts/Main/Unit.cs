@@ -113,6 +113,7 @@ public class Unit : MonoBehaviour {
 	// load ui element
 	public void LoadQuestionScreen() {
 		Debug.Log("A Question screen here should be loaded now.");
+		map.toggleQuiz();
 	}
 
 

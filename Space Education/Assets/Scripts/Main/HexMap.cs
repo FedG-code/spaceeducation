@@ -57,7 +57,7 @@ public class HexMap : MonoBehaviour
     private Dictionary<HexTileBase, GameObject> hexToGameObjectMap;
 
     // The current quizz
-    public GameObject Quizz;
+    public GameObject Quiz;
 
     public void GenerateNodes() {
         // Samuel: populate empy array of nodes the size of our map
@@ -248,6 +248,10 @@ public class HexMap : MonoBehaviour
 
         }
 
+    public void toggleQuiz(HexTileBase.TILE_TYPE tileType = HexTileBase.TILE_TYPE.SPACE) {
+        // Quizz.GetComponentInChildren
+        Quiz.SetActive(true);
+    }
     public void BougeTonQueue() {
         // Tells selectedUnit to make its next move, it does this by enqueueing next node
         selectedUnit.GetComponent<Unit>().enqueueNextTurn();
