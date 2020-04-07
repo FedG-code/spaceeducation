@@ -155,7 +155,7 @@ public class UIManager : MonoBehaviour
             case ResolutionScreenType.Correct:
                 uIElements.ResolutionBG.color = parameters.CorrectBGColor;
                 uIElements.ResolutionStateInfoText.text = "CORRECT!";
-                uIElements.ResolutionScoreText.text = "+" + score;
+                // uIElements.ResolutionScoreText.text = "+" + score;
 
 
 
@@ -163,22 +163,22 @@ public class UIManager : MonoBehaviour
             case ResolutionScreenType.Incorrect:
                 uIElements.ResolutionBG.color = parameters.IncorrectBGColor;
                 uIElements.ResolutionStateInfoText.text = "WRONG!";
-                uIElements.ResolutionScoreText.text = "-" + score;
+                // uIElements.ResolutionScoreText.text = "-" + score;
 
 
 
                 break;
             case ResolutionScreenType.Finish:
                 uIElements.ResolutionBG.color = parameters.FinalBGColor;
-                uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
+                uIElements.ResolutionStateInfoText.text = "You've got this amount of Resources";
 
                 StartCoroutine(CalculateScore());
                 uIElements.FinishUIElements.gameObject.SetActive(true);
                 uIElements.HighScoreText.gameObject.SetActive(true);
                 //Display Highscore
                 //Check if the highscore is a new highscore
-                uIElements.HighScoreText.text = ((highscore > events.StartupHighscore)
-                    ? "<color=yellow>new</color>" : string.Empty) + "Research Points: " + highscore;
+                int finalresearchpoints = events.ResearchPoints + events.CurrentFinalScore;
+
 
 
                 break;
@@ -230,8 +230,8 @@ public class UIManager : MonoBehaviour
 
     void UpdateScoreUI()
     {   // display the current score of the game
-        uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
+        // uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
 
-        uIElements.ResearchPoints.text = "Research Points: " + events.ResearchPoints;
+        // uIElements.ResearchPoints.text = "Research Points: " + events.ResearchPoints;
     }
 }
