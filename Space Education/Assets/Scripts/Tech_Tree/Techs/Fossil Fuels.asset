@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c579c9996f48943b59ac3aa0d11729, type: 3}
+  m_Name: Fossil Fuels
+  m_EditorClassIdentifier: 
+  maxTechPoints: 5
+  parentTech: {fileID: 0}
+  childTalents: []
+  techName: Fossil Fuels
+  description: " Fossil Fuels are made from the remains of organisms that lived long
+    long longago. . .  they are finite (which means they won\u2019t last forever)
+    so they need to be used wisely.They cannot be produced by humans and have to
+    be found.  We are essentially using oldremains cooked in bacteria (Oil and gas)
+    or plants that did not decompose correctly (coal) tomake the world run.  This
+    includes fuel for our spaceship."
+  icon: {fileID: 21300000, guid: 468dc146b7097e74e9393c93d85d4d2b, type: 3}
+  techType: 0
+  buffPerPoint: 0.5
+  elementsToEffect: 01000000
+  statToEffect: 

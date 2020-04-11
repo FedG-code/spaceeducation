@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16c579c9996f48943b59ac3aa0d11729, type: 3}
-  m_Name: testParent
+  m_Name: testChild
   m_EditorClassIdentifier: 
-  maxTechPoints: 5
-  parentTech: {fileID: 0}
-  childTalents:
-  - {fileID: 11400000, guid: 1dcd6cef408ba6b4d9241edd718087e1, type: 2}
-  techName: Test Parent
-  description: Testing Parent
+  maxTechPoints: 8
+  parentTech: {fileID: 11400000, guid: 5bb1fd5ace2e9574096d84005b529581, type: 2}
+  childTalents: []
+  techName: testChild
+  description: testing Child tech
   icon: {fileID: 0}
   techType: 1
   buffPerPoint: 1
-  elementsToEffect: 00000000
+  elementsToEffect: 01000000
   statToEffect: 
