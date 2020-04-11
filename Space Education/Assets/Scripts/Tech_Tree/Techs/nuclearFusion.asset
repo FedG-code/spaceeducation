@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c579c9996f48943b59ac3aa0d11729, type: 3}
+  m_Name: nuclearFusion
+  m_EditorClassIdentifier: 
+  maxTechPoints: 0
+  parentTech: {fileID: 0}
+  childTalents: []
+  techName: 
+  description: 
+  icon: {fileID: 0}
+  techType: 0
+  buffPerPoint: 0.5
+  elementsToEffect: 
+  statToEffect: 
