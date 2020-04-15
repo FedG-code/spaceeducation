@@ -28,3 +28,11 @@ Apologies: None
  - Hand in date is the 9th of April and so compromises are going to have to be made in order to have something playable at the end.
  - Any additional features that we are unable to include can be relayed in the further work section of the report
 
+<div class="row">
+ <figure class="6u 12u$(small)">
+   <img src="{% link assets/images/Pictures/Meeting 8-board-crop.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
+ </figure>
+ <figure class="6u 12u$(small)">
+   <img src="{% link assets/images/Pictures/Meeting 8-board.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
+ </figure>
+</div>
