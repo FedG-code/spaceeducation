@@ -3,6 +3,7 @@ layout: post
 title: Meeting 3
 location: Library room 9
 categories: [minutes]
+date: 2020-02-07 14:50 +0000
 Apologies: None
 ---
 ```

@@ -3,7 +3,7 @@ layout: post
 title: Meeting 2
 location: Room 513 GO Jones
 categories: [minutes]
-date: 2020-02-03 11:47
+date: 2020-02-03 11:47 +0000
 Apologies: None
 ---
 ```l
