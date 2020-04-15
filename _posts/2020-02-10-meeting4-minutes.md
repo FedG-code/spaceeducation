@@ -41,7 +41,7 @@ Apologies: None
   </ul>
   </div>
   <div class="6u 12u$(small)">
-  <img src="{% link /assets/images/pictures/1000000000000101000001619258C2AEE96C43BB.png %}" />
+  <img src="{{  '/assets/images/pictures/1000000000000101000001619258C2AEE96C43BB.png' | absolute_url  }}" />
   </div>
 </div>
 
@@ -67,14 +67,14 @@ for example
 How many primary nodes; then we can decide how to fill these nodes.
 
 <div class="row">
-  <div class="6u 12u$(small)"><img src="{% link /assets/images/pictures/1000000000000668000003D1172A60DB551B1FDE.png %}" /></div>
-  <div class="6u 12u$(small)"><img src="{% link /assets/images/pictures/1000000000000595000009C431A57B968CA87D22.png %}" /></div>
+  <div class="6u 12u$(small)"><img src="{{  '/assets/images/pictures/1000000000000668000003D1172A60DB551B1FDE.png' | absolute_url  }}" /></div>
+  <div class="6u 12u$(small)"><img src="{{  '/assets/images/pictures/1000000000000595000009C431A57B968CA87D22.png' | absolute_url  }}" /></div>
 </div>
 
 # Fog of War
 
 <div class="row">
-<div class="6u 12u$(small)"><img src="{% link /assets/images/pictures/10000000000001CB000000FA58FE3F528F35CF42.png %}" /></div>
+<div class="6u 12u$(small)"><img src="{{  '/assets/images/pictures/10000000000001CB000000FA58FE3F528F35CF42.png' | absolute_url  }}" /></div>
 
 <div class="6u 12u$(small)">
 Will be implemented

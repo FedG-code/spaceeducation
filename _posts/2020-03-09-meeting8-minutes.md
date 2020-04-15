@@ -33,7 +33,6 @@ Apologies: None
    <img src="{{ "/assets/images/pictures/meeting_8-board-crop.png" | absolute_url }}" alt="" /><figcaption>Meeting 8 board</figcaption>
  </figure>
  <figure class="6u 12u$(small)">
-   <img src="{% link /assets/images/pictures/meeting_8-board.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
+   <img src="{{  "/assets/images/pictures/meeting_8-board.png" | absolute_url  }}" alt="" /><figcaption>Meeting 8 board</figcaption>
  </figure>
 </div>
-
