@@ -3,7 +3,7 @@ title: Vega
 subtitle: Galaxy
 description: A Hex tile strategy game set in space
 baseurl: "/spaceeducation" # the subpath of your site, e.g. /blog
-url: "https://fedg-code.github.io/spaceeducation" # the base hostname & protocol for your site
+url: "https://fedg-code.github.io/" # the base hostname & protocol for your site
 hidden_categories: ["minutes"]
 
 # homepage tiles
