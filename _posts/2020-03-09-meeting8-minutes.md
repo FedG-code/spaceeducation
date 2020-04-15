@@ -30,9 +30,9 @@ Apologies: None
 
 <div class="row">
  <figure class="6u 12u$(small)">
-   <img src="{% link assets/images/Pictures/Meeting 8-board-crop.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
+   <img src="{% link /assets/images/pictures/meeting_8-board-crop.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
  </figure>
  <figure class="6u 12u$(small)">
-   <img src="{% link assets/images/Pictures/Meeting 8-board.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
+   <img src="{% link /assets/images/pictures/meeting_8-board.png %}" alt="" /><figcaption>Meeting 8 board</figcaption>
  </figure>
 </div>

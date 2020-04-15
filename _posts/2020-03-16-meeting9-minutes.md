@@ -32,5 +32,5 @@ Apologies: None
 # Attachments
 
 <figure>
-<img src="{% link assets/images/Pictures/Meeting 9-hexmap.png %}" alt="" /><figcaption>Hex board initial state</figcaption>
+<img src="{% link /assets/images/pictures/meeting_9-hexmap.png %}" alt="" /><figcaption>Hex board initial state</figcaption>
 </figure>

@@ -40,9 +40,9 @@ Apologies: None
 
 <div class="row">
  <figure class="6u 12u$(small)">
-   <img src="{% link assets/images/Pictures/Meeting 6 Minutes-writeup.png %}" alt="" /><figcaption>Hand written meeting 6 minutes</figcaption>
+   <img src="{% link /assets/images/pictures/meeting_6_minutes-writeup.png %}" alt="" /><figcaption>Hand written meeting 6 minutes</figcaption>
  </figure>
  <figure class="6u 12u$(small)">
-   <img src="{% link /assets/images/Pictures/Meeting 6 Minutes-board notes-cropped.png %}" alt="" /><figcaption>Meeting 6 notes taken from board</figcaption>
+   <img src="{% link /assets/images/pictures/meeting_6_minutes-board_notes-cropped.png %}" alt="" /><figcaption>Meeting 6 notes taken from board</figcaption>
  </figure>
 </div>
