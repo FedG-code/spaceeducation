@@ -3,6 +3,7 @@ layout: post
 title: Meeting 1
 location: Library room 6
 categories: [minutes]
+date: 2020-01-27 12:45 +0000
 Apologies: Ben Smith
 ---
 ```
