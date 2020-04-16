@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniMap2: MonoBehaviour
+public class MiniMap : MonoBehaviour
 {
     // Start is called before the first frame update
 
